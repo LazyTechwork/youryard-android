@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "852019475087",
+    "project_id": "yard-783bf",
+    "storage_bucket": "yard-783bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852019475087:android:1f906458ed012ca259b6fa",
+        "android_client_info": {
+          "package_name": "com.example.yard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852019475087-fsjenckl8bf5332jj2tmmkha9a6s37j2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRfSRcRjluUs_MvEyqkTutNkJHz0ciSjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852019475087-fsjenckl8bf5332jj2tmmkha9a6s37j2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

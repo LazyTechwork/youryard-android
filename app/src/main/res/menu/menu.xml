@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/messages"
+        android:title="Сообщения"
+        android:icon="@drawable/ic_icon_messages"
+        app:showAsAction="ifRoom">
+    </item>
+    <item
+        android:id="@+id/notifications"
+        android:title="Уведомления"
+        android:icon="@drawable/ic_icon_notifications"
+        app:showAsAction="ifRoom">
+    </item>
+    <item
+        android:id="@+id/servises"
+        android:title="Сервисы"
+        android:icon="@drawable/ic_icon_servises"
+        app:showAsAction="ifRoom">
+    </item>
+    <item
+        android:id="@+id/profile"
+        android:title="Профиль"
+        android:icon="@drawable/ic_icon_profile"
+        app:showAsAction="ifRoom">
+    </item>
+</menu>
