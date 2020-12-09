@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="6dp"
+    android:background="@drawable/rounded_box"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/poll_progress"
+        app:layout_constraintEnd_toEndOf="@+id/poll_header"
+        app:layout_constraintTop_toTopOf="@+id/poll_progress"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_yard_like" />
+
+    <TextView
+        android:id="@+id/poll_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Название голосования"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/poll_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Адрес или описание, короче какой-то прикольный текст..........."
+        app:layout_constraintEnd_toEndOf="@+id/poll_header"
+        app:layout_constraintStart_toStartOf="@+id/poll_header"
+        app:layout_constraintTop_toBottomOf="@+id/poll_header" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_imagesvg_maps" />
+
+    <ProgressBar
+        android:id="@+id/poll_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:max="10"
+        android:progress="3"
+        android:progressBackgroundTint="#3faa35"
+        android:progressBackgroundTintMode="screen"
+        android:progressTint="#df0914"
+        android:scaleY="1.5"
+        app:layout_constraintEnd_toStartOf="@+id/imageView5"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/poll_desc" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/poll_progress"
+        app:layout_constraintStart_toStartOf="@+id/poll_desc"
+        app:layout_constraintTop_toTopOf="@+id/poll_progress"
+        app:srcCompat="@drawable/ic_yard_dislike" />
+</androidx.constraintlayout.widget.ConstraintLayout>
