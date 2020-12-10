@@ -38,14 +38,14 @@
             android:id="@+id/user_profile_image"
             android:layout_width="160dp"
             android:layout_height="150dp"
-            android:src="@drawable/ic_male_icon" />
+            app:srcCompat="@drawable/ic_male_icon" />
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="редактировать ✎"
+        android:text="Информация"
         android:textSize="18sp"
         android:fontFamily="@font/montserrat"
         android:textColor="@color/black"
@@ -54,6 +54,190 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         app:layout_constraintVertical_bias="0.050000012" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+
+        <LinearLayout
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:fontFamily="@font/montserrat"
+                android:textSize="16dp"
+                android:text="Фамилия">
+            </TextView>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat"
+                android:textSize="16dp"
+                android:text="Липперт">
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:fontFamily="@font/montserrat"
+                android:textSize="16dp"
+                android:text="Имя">
+            </TextView>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat"
+                android:textSize="16dp"
+                android:text="Марк">
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:fontFamily="@font/montserrat"
+                android:textSize="16dp"
+                android:text="Город">
+            </TextView>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat"
+                android:textSize="16dp"
+                android:text="Салават">
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:fontFamily="@font/montserrat"
+                android:textSize="16dp"
+                android:text="Улица">
+            </TextView>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat"
+                android:textSize="16dp"
+                android:text="Бекетова">
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:fontFamily="@font/montserrat"
+                android:textSize="16dp"
+                android:text="Дом">
+            </TextView>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat"
+                android:textSize="16dp"
+                android:text="52">
+            </TextView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/green_button"
+        android:fontFamily="@font/montserrat_bold"
+        android:paddingVertical="17dp"
+        android:paddingHorizontal="30dp"
+        android:text="Редактировать ✎"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,11 +13,13 @@ import com.example.yard.fragments_bottom_menu.MessagesFragment;
 import com.example.yard.fragments_bottom_menu.NotificationsFragment;
 import com.example.yard.fragments_bottom_menu.ProfileFragment;
 import com.example.yard.fragments_bottom_menu.ServicesFragment;
+import com.example.yard.utils.JSONInteractor;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
         File file = new File(dfp);
         if (!file.exists()) {
             try {
-                new FileWriter(dfp).write("{\"polls\":[{\"id\":1,\"name\":\"Обновить фасады домов\",\"description\":\"Выделение ЖКХ средств на реализацию обшития дома новыми фасадами\",\"pros\":27,\"cons\":3},{\"id\":2,\"name\":\"Обновить фасады домов 2\",\"description\":\"Выделение ЖКХ средств на реализацию обшития дома новыми фасадами\",\"pros\":15,\"cons\":10}]}");
+                JSONInteractor jsonInteractor = new JSONInteractor(this, "data.json");
+                jsonInteractor.writeRawJSON(jsonInteractor.loadJSONFromAsset("data.json"));
             } catch (IOException e) {
                 Log.e("DFP", "Data file cannot be created", e);
             }

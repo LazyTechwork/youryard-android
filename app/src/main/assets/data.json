@@ -1,0 +1,60 @@
+{
+  "polls": [
+    {
+      "id": 1,
+      "name": "Обновить фасады домов",
+      "description": "Выделение ЖКХ средств на реализацию обшития дома новыми фасадами",
+      "address": "Москва, ул. Ленина, дом 16",
+      "pros": 27,
+      "cons": 3,
+      "image": "https://newtambov.ru/storage/taisia/2018/05/DSC02076.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Починить качели",
+      "description": "Сломались мои любимые качели. Теперь я не знаю чем себя занять.",
+      "address": "Казань, пр. Победы, дом 28-1",
+      "pros": 15,
+      "cons": 10,
+      "image": "https://gazeta-shebekino.ru/media/filer_public_thumbnails/filer_public/e7/95/e7959cea-e592-4755-ac18-f501c8d7e13d/slomannye_kacheli.jpg__750x415_q90_crop-True_subject_location-512%2C385_subsampling-2_upscale.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Снег на дороге",
+      "description": "Не чистят дорогу уже неделю. Невозможно проехать",
+      "address": "Казань, ул. Универсиады, дом 31-А",
+      "pros": 3,
+      "image": "https://ic.pics.livejournal.com/napaki/12851221/10784/10784_original.jpg",
+      "cons": 1
+    },
+    {
+      "id": 4,
+      "name": "Замена знака ПДД",
+      "description": "Кто-то сломал знак ПДД на дороге напротив дома. Нужно заменить",
+      "address": "Москва, ул. Ленина, дом 16",
+      "pros": 4,
+      "cons": 0,
+      "image": "https://avatars.mds.yandex.net/get-zen_doc/118017/pub_5d1c9307edee3600ad20083e_5d1c933724e56600ad2b506a/scale_1200"
+    },
+    {
+      "id": 5,
+      "name": "Испортили забор",
+      "description": "На моем заборе вчера написали, что я чебурашка. Кто-нибудь знает кто это сделал?",
+      "address": "Казань, пр. Ярослава, дом 18",
+      "pros": 7,
+      "cons": 34,
+      "image": "https://cs6.pikabu.ru/post_img/big/2014/09/12/10/1410540857_2001509478.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Обновить фасады домов",
+      "description": "Выделение ЖКХ средств на реализацию обшития дома новыми фасадами",
+      "address": "Москва, ул. Ленина, дом 16",
+      "pros": 252,
+      "cons": 3,
+      "image": "https://newtambov.ru/storage/taisia/2018/05/DSC02076.jpg"
+    }
+  ],
+  "my_polls": [
+  ]
+}

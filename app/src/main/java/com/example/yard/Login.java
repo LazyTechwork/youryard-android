@@ -45,6 +45,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+                            Register.setDefaults("visited", "visited", Login.this);
                             startActivity(new Intent(Login.this, MainActivity.class));
                         } else{
                             Toast.makeText(Login.this, "Try again", Toast.LENGTH_SHORT).show();

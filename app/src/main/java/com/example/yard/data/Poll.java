@@ -2,14 +2,16 @@ package com.example.yard.data;
 
 public class Poll {
     private int id, pros, cons;
-    private String name, description;
+    private String name, description, city, image;
 
-    public Poll(int id, int pros, int cons, String name, String description) {
+    public Poll(int id, int pros, int cons, String name, String description, String city, String image) {
         this.id = id;
         this.pros = pros;
         this.cons = cons;
         this.name = name;
+        this.city = city;
         this.description = description;
+        this.image = image;
     }
 
     public int getId() {
@@ -50,5 +52,21 @@ public class Poll {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

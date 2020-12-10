@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoadingActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    String email, password;
+    String email, password, name, surname, city, street;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,10 @@ public class LoadingActivity extends AppCompatActivity {
 
         email = Register.getDefaults("user-email", LoadingActivity.this);
         password = Register.getDefaults("user-password", LoadingActivity.this);
+        name = Register.getDefaults("user-name", LoadingActivity.this);
+        surname = Register.getDefaults("user-surname", LoadingActivity.this);
+        city = Register.getDefaults("user-city", LoadingActivity.this);
+        street = Register.getDefaults("user-street", LoadingActivity.this);
 
         mAuth = FirebaseAuth.getInstance();
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -32,6 +36,7 @@ public class LoadingActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            Register.setDefaults("visited", "visited", LoadingActivity.this);
                             int milliseconds_delayed = 1200;
                             new Handler().postDelayed(new Runnable() {
                                 @Override

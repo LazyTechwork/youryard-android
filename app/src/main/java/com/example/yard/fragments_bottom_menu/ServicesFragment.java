@@ -3,6 +3,7 @@ package com.example.yard.fragments_bottom_menu;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ public class ServicesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         View v = inflater.inflate(R.layout.fragment_services, container, false);
 
         mImageCovid = v.findViewById(R.id.covid_image);

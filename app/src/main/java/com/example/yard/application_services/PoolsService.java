@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.yard.R;
@@ -13,9 +15,18 @@ import com.example.yard.adapters.PollsAdapter;
 import com.example.yard.data.DataObject;
 import com.example.yard.data.Poll;
 import com.example.yard.utils.JSONInteractor;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PoolsService extends AppCompatActivity {
 
@@ -24,14 +35,50 @@ public class PoolsService extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pools_service);
         ArrayList<Poll> polls = new ArrayList<>();
-        polls.add(new Poll(1, 12, 13, "Скамейка", "1234"));
-        polls.add(new Poll(2, 16, 123, "Скамейка 2", "1234"));
-        polls.add(new Poll(3, 22, 52, "Скамейка 3", "1234"));
-        PollsAdapter pollsAdapter = new PollsAdapter(this);
-        pollsAdapter.updateData(polls);
 
-        RecyclerView pollsView = (RecyclerView) findViewById(R.id.polls_view);
-        pollsView.setAdapter(pollsAdapter);
-        pollsView.setLayoutManager(new LinearLayoutManager(this));
+        try {
+            /*JSONObject obj = new JSONObject(loadJSONFromAsset());
+            JSONArray m_jArry = obj.getJSONArray("polls");
+
+            for (int i = 0; i < m_jArry.length(); i++) {
+                JSONObject jo_inside = m_jArry.getJSONObject(i);
+                String mPollName = jo_inside.getString("name");
+                String mPollDesc = jo_inside.getString("description");
+                String mPollCity = jo_inside.getString("address");
+                String mImage = jo_inside.getString("image");
+                Integer mId = jo_inside.getInt("id");
+                Integer mPros = jo_inside.getInt("pros");
+                Integer mCons = jo_inside.getInt("cons");
+                polls.add(new Poll(mId, mPros, mCons, mPollName, mPollDesc, mPollCity, mImage));
+            }*/
+            JSONInteractor jsonInteractor = new JSONInteractor(this, "data.json");
+            polls = jsonInteractor.readJSON(DataObject.class).getPolls();
+            PollsAdapter pollsAdapter = new PollsAdapter(this);
+            pollsAdapter.updateData(polls);
+
+            RecyclerView pollsView = (RecyclerView) findViewById(R.id.polls_view);
+            pollsView.setAdapter(pollsAdapter);
+            pollsView.setLayoutManager(new LinearLayoutManager(this));
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = this.getAssets().open("data.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,16 @@ public class RegisterFragment3 extends Fragment {
                 Register.setDefaults("user-password", password, getActivity());
                 Register.setDefaults("user-email", email, getActivity());
                 startActivity(new Intent(getActivity(), LoadingActivity.class));
+            }
+        });
+
+        Register.mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Register.mProgressBar.setProgress(Register.mProgressBar.getProgress()-1);
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.container, new RegisterFragment2());
+                fragmentTransaction.commit();
             }
         });
 

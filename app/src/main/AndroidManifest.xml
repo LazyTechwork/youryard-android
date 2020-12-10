@@ -5,30 +5,33 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+
         android:allowBackup="true"
         android:icon="@drawable/ic_yard_appicon_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".application_services.MoneyService"></activity>
-        <activity android:name=".application_services.DobroService" />
-        <activity android:name=".application_services.CovidService" />
-        <activity android:name=".application_services.MapsService" />
-        <activity android:name=".application_services.PoolsService" />
-        <activity android:name=".LoadingActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register" />
+        <activity android:name=".application_services.MoneyService" />
+        <activity android:name=".application_services.DobroService" />
+        <activity android:name=".application_services.CovidService" />
+        <activity android:name=".application_services.MapsService" />
+        <activity android:name=".application_services.PoolsService" />
+        <activity android:name=".LoadingActivity" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".Register"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Login"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
