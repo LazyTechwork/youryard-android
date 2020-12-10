@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fbb16698-7dec-437c-be0e-6c42dfe50e75" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/main/assets/data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/res/drawable/blue_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/res/drawable/green_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/res/drawable/ic_green_filled.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/res/drawable/ic_green_notfilled.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/res/drawable/ic_red_filled.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/res/drawable/ic_red_notfilled.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/res/drawable/red_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/res/drawable/round_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/res/layout/alert_create_statement.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/com/example/yard/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/com/example/yard/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/com/example/yard/adapters/PollsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/com/example/yard/adapters/PollsAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/com/example/yard/application_services/MapsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/com/example/yard/application_services/MapsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/com/example/yard/application_services/PoolsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/com/example/yard/application_services/PoolsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/com/example/yard/data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/com/example/yard/data/DataObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/com/example/yard/data/DataObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/com/example/yard/data/Poll.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/com/example/yard/data/Poll.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/com/example/yard/fragments_bottom_menu/MessagesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/com/example/yard/fragments_bottom_menu/MessagesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/com/example/yard/fragments_bottom_menu/NotificationsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/com/example/yard/fragments_bottom_menu/NotificationsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/com/example/yard/fragments_bottom_menu/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/com/example/yard/fragments_bottom_menu/ProfileFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/com/example/yard/fragments_bottom_menu/ServicesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/com/example/yard/fragments_bottom_menu/ServicesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/com/example/yard/utils/JSONInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/com/example/yard/utils/JSONInteractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/res/drawable/rounded_box.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/res/drawable/rounded_box.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/res/layout/activity_maps_service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/res/layout/activity_maps_service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/res/layout/activity_pools_service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/res/layout/activity_pools_service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/res/layout/fragment_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/res/layout/view_poll.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/res/layout/view_poll.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/res/values/themes.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1lSvacxu61alixTLarU6srVGgsG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fbb16698-7dec-437c-be0e-6c42dfe50e75" name="Default Changelist" comment="" />
+      <created>1607603371360</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607603371360</updated>
+    </task>
+    <servers />
+  </component>
+</project>

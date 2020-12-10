@@ -9,13 +9,21 @@ import android.os.Handler;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoadingActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private FirebaseFirestore fStore;
+    String userID;
     String email, password, name, surname, city, street;
 
     @Override
@@ -31,12 +39,31 @@ public class LoadingActivity extends AppCompatActivity {
         street = Register.getDefaults("user-street", LoadingActivity.this);
 
         mAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Register.setDefaults("visited", "visited", LoadingActivity.this);
+
+                            userID = mAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference = fStore.collection("users").document(userID);
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("email", email);
+                            user.put("name", name);
+                            user.put("surname", surname);
+                            user.put("city", city);
+                            user.put("street", street);
+                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(LoadingActivity.this, "Easy", Toast.LENGTH_SHORT).show();
+                                    //Maybe someday I will write something here.....
+                                }
+                            });
+
                             int milliseconds_delayed = 1200;
                             new Handler().postDelayed(new Runnable() {
                                 @Override

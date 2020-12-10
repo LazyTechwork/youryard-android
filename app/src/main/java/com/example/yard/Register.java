@@ -16,13 +16,13 @@ import android.widget.Toast;
 import com.example.yard.fragments_registration.RegisterFragment1;
 import com.example.yard.fragments_registration.RegisterFragment2;
 import com.example.yard.fragments_registration.RegisterFragment3;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Register extends AppCompatActivity {
 
     public static Button mBack, mNext;
     public static ProgressBar mProgressBar;
-    public static FragmentTransaction fragmentTransaction;
-
+    private FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +36,6 @@ public class Register extends AppCompatActivity {
 
         mBack = findViewById(R.id.backButton);
         mNext = findViewById(R.id.nextButton);
-
-
-
 
     }
 

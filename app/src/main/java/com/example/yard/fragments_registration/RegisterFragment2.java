@@ -29,10 +29,8 @@ public class RegisterFragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 //SET DEFAULTS
-                Register.setDefaults("user-name", mCity.getText().toString().trim(), getActivity());
-                Register.setDefaults("user-surname", mStreet.getText().toString().trim(), getActivity());
-                Register.setDefaults("user-city", "", getActivity());
-                Register.setDefaults("user-street", "", getActivity());
+                Register.setDefaults("user-city", mCity.getText().toString().trim(), getActivity());
+                Register.setDefaults("user-street", mStreet.getText().toString().trim(), getActivity());
                 //CHANGE FRAGMENT
                 Register.mProgressBar.setProgress(Register.mProgressBar.getProgress()+1);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();

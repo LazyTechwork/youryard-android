@@ -1,0 +1,139 @@
+Index: app/src/main/res/layout/activity_pools_service.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    tools:context=\".application_services.PoolsService\">\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_pools_service.xml	(revision b2fdec655d56e8cbd6dc164c7969949281e6c235)
++++ app/src/main/res/layout/activity_pools_service.xml	(date 1607533441000)
+@@ -6,4 +6,17 @@
+     android:layout_height="match_parent"
+     tools:context=".application_services.PoolsService">
+ 
++    <ScrollView
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent">
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="vertical" />
++    </ScrollView>
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\n    id 'com.android.application'\n    id 'com.google.gms.google-services'\n}\n\nandroid {\n    compileSdkVersion 30\n    buildToolsVersion \"30.0.3\"\n\n    defaultConfig {\n        applicationId \"com.example.yard\"\n        minSdkVersion 19\n        targetSdkVersion 30\n        versionCode 1\n        versionName \"1.0\"\n\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\n    }\n\n    buildTypes {\n        release {\n            minifyEnabled false\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\n        }\n    }\n    compileOptions {\n        sourceCompatibility JavaVersion.VERSION_1_8\n        targetCompatibility JavaVersion.VERSION_1_8\n    }\n}\n\ndependencies {\n    implementation 'de.hdodenhof:circleimageview:3.1.0'\n    implementation 'com.google.code.gson:gson:2.8.6'\n\n    implementation 'androidx.appcompat:appcompat:1.1.0'\n    implementation 'com.google.android.material:material:1.1.0'\n    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'\n    implementation 'androidx.annotation:annotation:1.1.0'\n    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'\n    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'\n    implementation 'androidx.legacy:legacy-support-v4:1.0.0'\n    implementation 'com.google.firebase:firebase-auth:19.2.0'\n    testImplementation 'junit:junit:4.+'\n    androidTestImplementation 'androidx.test.ext:junit:1.1.1'\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision b2fdec655d56e8cbd6dc164c7969949281e6c235)
++++ app/build.gradle	(date 1607525572000)
+@@ -41,6 +41,7 @@
+     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+     implementation 'com.google.firebase:firebase-auth:19.2.0'
++    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+     testImplementation 'junit:junit:4.+'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+Index: app/src/main/res/layout/activity_maps_service.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    tools:context=\".application_services.MapsService\">\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_maps_service.xml	(revision b2fdec655d56e8cbd6dc164c7969949281e6c235)
++++ app/src/main/res/layout/activity_maps_service.xml	(date 1607526493000)
+@@ -6,4 +6,5 @@
+     android:layout_height="match_parent"
+     tools:context=".application_services.MapsService">
+ 
++
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/drawable/green_button.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/green_button.xml	(date 1607531644000)
++++ app/src/main/res/drawable/green_button.xml	(date 1607531644000)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android"
++    android:shape="rectangle">
++    <solid android:color="@color/green" />
++    <corners android:radius="16dp"/>
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n    <color name=\"main_blue\">#03A9F4</color>\n    <color name=\"white\">#FFFFFFFF</color>\n    <color name=\"light_grey\">#7A7A7A</color>\n    <color name=\"black\">#FF000000</color>\n\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/colors.xml	(revision b2fdec655d56e8cbd6dc164c7969949281e6c235)
++++ app/src/main/res/values/colors.xml	(date 1607531587000)
+@@ -4,5 +4,7 @@
+     <color name="white">#FFFFFFFF</color>
+     <color name="light_grey">#7A7A7A</color>
+     <color name="black">#FF000000</color>
++    <color name="green">#4CAF50</color>
++    <color name="red">#EF5350</color>
+ 
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/drawable/round_view.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/round_view.xml	(date 1607531123000)
++++ app/src/main/res/drawable/round_view.xml	(date 1607531123000)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android"
++    android:shape="rectangle">
++    <stroke android:width="5dp" android:color="#d4d4d4" />
++    <corners android:radius="40dp"/>
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/drawable/red_button.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/red_button.xml	(date 1607531738000)
++++ app/src/main/res/drawable/red_button.xml	(date 1607531738000)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android"
++    android:shape="rectangle">
++    <solid android:color="@color/red" />
++    <corners android:radius="16dp"/>
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/drawable/blue_button.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/blue_button.xml	(date 1607531847000)
++++ app/src/main/res/drawable/blue_button.xml	(date 1607531847000)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android"
++    android:shape="rectangle">
++    <solid android:color="@color/main_blue" />
++    <corners android:radius="16dp"/>
++</shape>
+\ No newline at end of file
