@@ -1,32 +1,21 @@
 package com.example.yard.application_services;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.yard.R;
 import com.example.yard.adapters.PollsAdapter;
 import com.example.yard.data.DataObject;
 import com.example.yard.data.Poll;
 import com.example.yard.utils.JSONInteractor;
-import com.google.gson.Gson;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class PoolsService extends AppCompatActivity {
 
@@ -56,7 +45,7 @@ public class PoolsService extends AppCompatActivity {
             PollsAdapter pollsAdapter = new PollsAdapter(this);
             pollsAdapter.updateData(polls);
 
-            RecyclerView pollsView = (RecyclerView) findViewById(R.id.polls_view);
+            RecyclerView pollsView = findViewById(R.id.polls_view);
             pollsView.setAdapter(pollsAdapter);
             pollsView.setLayoutManager(new LinearLayoutManager(this));
 

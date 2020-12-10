@@ -1,13 +1,13 @@
 package com.example.yard;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 
 import com.example.yard.fragments_bottom_menu.MessagesFragment;
 import com.example.yard.fragments_bottom_menu.NotificationsFragment;
@@ -17,9 +17,7 @@ import com.example.yard.utils.JSONInteractor;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String dfp = getApplicationContext().getFilesDir() + "/data.json";
-        File file = new File(dfp);
+        File file = new File(this.getExternalFilesDir(null), "data.json");
         if (!file.exists()) {
             try {
                 JSONInteractor jsonInteractor = new JSONInteractor(this, "data.json");
