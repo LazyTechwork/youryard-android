@@ -40,10 +40,10 @@ public class PoolsService extends AppCompatActivity {
                 Integer mCons = jo_inside.getInt("cons");
                 polls.add(new Poll(mId, mPros, mCons, mPollName, mPollDesc, mPollCity, mImage));
             }*/
-            JSONInteractor jsonInteractor = new JSONInteractor(this, "data.json");
-            polls = jsonInteractor.readJSON(DataObject.class).getPolls();
+            DataObject data = new JSONInteractor(this, "data.json").readJSON(DataObject.class);
             PollsAdapter pollsAdapter = new PollsAdapter(this);
-            pollsAdapter.updateData(polls);
+            pollsAdapter.setLockedPolls(data.getMypolls());
+            pollsAdapter.updateData(data.getPolls());
 
             RecyclerView pollsView = findViewById(R.id.polls_view);
             pollsView.setAdapter(pollsAdapter);

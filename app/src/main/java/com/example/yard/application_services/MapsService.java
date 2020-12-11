@@ -45,7 +45,7 @@ public class MapsService extends AppCompatActivity {
                     DataObject data = jsonInteractor.readJSON(DataObject.class);
                     ArrayList<Poll> polls = data.getPolls();
                     int newId = polls.get(polls.size() - 1).getId() + 1;
-                    polls.add(new Poll(newId, 0, 0, formTitle.getText().toString(), formText.getText().toString(), formAddress.getText().toString(), "https://newtambov.ru/storage/taisia/2018/05/DSC02076.jpg"));
+                    polls.add(new Poll(newId, 1, 0, formTitle.getText().toString(), formText.getText().toString(), formAddress.getText().toString(), "https://newtambov.ru/storage/taisia/2018/05/DSC02076.jpg"));
                     data.setPolls(polls);
                     ArrayList<Integer> my_polls = data.getMypolls();
                     my_polls.add(newId);

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHolder> {
 
     private ArrayList<Poll> items;
+    private ArrayList<Integer> lockedPolls;
     private Activity activity;
     private final JSONInteractor dataInteractor;
 
@@ -55,7 +57,7 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
 
     public void updateData(ArrayList<Poll> polls) {
         this.items = polls;
-        this.notifyDataSetChanged();
+        activity.runOnUiThread(this::notifyDataSetChanged);
     }
 
     public void updateData(Poll poll, int pos) {
@@ -71,6 +73,14 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public ArrayList<Integer> getLockedPolls() {
+        return lockedPolls;
+    }
+
+    public void setLockedPolls(ArrayList<Integer> lockedPolls) {
+        this.lockedPolls = lockedPolls;
     }
 
     class PollViewHolder extends RecyclerView.ViewHolder {
@@ -118,6 +128,10 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
             progressBar.setProgress(poll.getPros());
 
             mImageLike.setOnClickListener(v -> {
+                if (lockedPolls.contains(poll.getId())) {
+                    Toast.makeText(activity, "Голосовать за свои заявки нельзя!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (poll.isVoted()) {
                     if (poll.isVotedPros()) {
                         poll.setVoted(false);
@@ -138,29 +152,13 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
                 } catch (IOException e) {
                     Log.e("Polls Adapter", "Error while reading or writing data", e);
                 }
-                /*if (green_flag == 0 && red_flag == 0) {
-                    mImageLike.setImageResource(R.drawable.ic_green_filled);
-                    mVotesCount.setText("+" + (1 + Integer.valueOf(mVotesCount.getText().toString())));
-                    green_flag = 1;
-                    progressBar.setProgress(progressBar.getProgress() + 1);
-                } else {
-                    if (green_flag == 1) {
-                        mImageLike.setImageResource(R.drawable.ic_green_notfilled);
-                        mVotesCount.setText("+" + (-1 + Integer.valueOf(mVotesCount.getText().toString())));
-                        green_flag = 0;
-                        progressBar.setProgress(progressBar.getProgress() - 1);
-                    } else {
-                        mImageLike.setImageResource(R.drawable.ic_green_filled);
-                        mImageDislike.setImageResource(R.drawable.ic_red_notfilled);
-                        mVotesCount.setText("+" + (+2 + Integer.valueOf(mVotesCount.getText().toString())));
-                        green_flag = 1;
-                        red_flag = 0;
-                        progressBar.setProgress(progressBar.getProgress() + 2);
-                    }
-                }*/
             });
 
             mImageDislike.setOnClickListener(v -> {
+                if (lockedPolls.contains(poll.getId())) {
+                    Toast.makeText(activity, "Голосовать за свои заявки нельзя!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (poll.isVoted()) {
                     if (!poll.isVotedPros()) {
                         poll.setVoted(false);
@@ -181,26 +179,6 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
                 } catch (IOException e) {
                     Log.e("Polls Adapter", "Error while reading or writing data", e);
                 }
-                /*if (red_flag == 0 && green_flag == 0) {
-                    mImageDislike.setImageResource(R.drawable.ic_red_filled);
-                    mVotesCount.setText("+" + (-1 + Integer.valueOf(mVotesCount.getText().toString())));
-                    red_flag = 1;
-                    progressBar.setProgress(progressBar.getProgress() - 1);
-                } else {
-                    if (red_flag == 1) {
-                        mImageDislike.setImageResource(R.drawable.ic_red_notfilled);
-                        mVotesCount.setText("+" + (1 + Integer.valueOf(mVotesCount.getText().toString())));
-                        red_flag = 0;
-                        progressBar.setProgress(progressBar.getProgress() + 1);
-                    } else {
-                        mImageDislike.setImageResource(R.drawable.ic_red_filled);
-                        mImageLike.setImageResource(R.drawable.ic_green_notfilled);
-                        mVotesCount.setText("+" + (-2 + Integer.valueOf(mVotesCount.getText().toString())));
-                        red_flag = 1;
-                        green_flag = 0;
-                        progressBar.setProgress(progressBar.getProgress() - 2);
-                    }
-                }*/
             });
         }
 
