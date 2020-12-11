@@ -1,12 +1,16 @@
 package com.example.yard.application_services;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +27,7 @@ import com.example.yard.adapters.CovidsAdapter;
 import com.example.yard.adapters.PollsAdapter;
 import com.example.yard.data.Covid;
 import com.example.yard.data.DataObject;
+import com.example.yard.data.Poll;
 import com.example.yard.utils.JSONInteractor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -36,6 +41,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CovidService extends AppCompatActivity {
@@ -109,6 +115,28 @@ public class CovidService extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+        Button mButton;
+        mButton = findViewById(R.id.button);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.app.AlertDialog.Builder builder = new AlertDialog.Builder(CovidService.this);
+                View view = getLayoutInflater().inflate(R.layout.alert_create_statement_covid, null);
+                builder.setView(view);
+
+                EditText formTitle = view.findViewById(R.id.title);
+                EditText formText = view.findViewById(R.id.message);
+                EditText formAddress = view.findViewById(R.id.address);
+                EditText formPerson = view.findViewById(R.id.person);
+
+                builder.setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                    //write here
+                });
+
+                builder.setNegativeButton(android.R.string.no, null).show();
+            }
+        });
 
     }
 }
