@@ -2,6 +2,7 @@ package com.example.yard.application_services;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,6 +52,9 @@ public class MapsService extends AppCompatActivity {
                     my_polls.add(newId);
                     data.setMypolls(my_polls);
                     jsonInteractor.writeJSON(data);
+
+                    startActivity(new Intent(MapsService.this, MapsServiceFilled.class));
+
                 } catch (IOException e) {
                     Log.e("Maps Service", "Error occurred while reading/writing data", e);
                 }

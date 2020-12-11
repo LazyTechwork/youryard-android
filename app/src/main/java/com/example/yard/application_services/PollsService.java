@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class PoolsService extends AppCompatActivity {
+public class PollsService extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

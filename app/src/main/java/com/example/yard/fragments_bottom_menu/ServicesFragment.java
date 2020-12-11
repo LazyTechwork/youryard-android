@@ -15,7 +15,7 @@ import com.example.yard.application_services.CovidService;
 import com.example.yard.application_services.DobroService;
 import com.example.yard.application_services.MapsService;
 import com.example.yard.application_services.MoneyService;
-import com.example.yard.application_services.PoolsService;
+import com.example.yard.application_services.PollsService;
 import com.example.yard.R;
 
 public class ServicesFragment extends Fragment {
@@ -64,7 +64,7 @@ public class ServicesFragment extends Fragment {
         mImagePools.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), PoolsService.class));
+                startActivity(new Intent(getActivity(), PollsService.class));
             }
         });
 

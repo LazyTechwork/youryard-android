@@ -18,6 +18,7 @@
         android:background="@color/main_blue"
         android:contentDescription="@string/app_name" />
     <EditText
+        android:layout_marginHorizontal="20dp"
         android:id="@+id/title"
         android:inputType="textEmailAddress"
         android:layout_width="match_parent"
@@ -28,9 +29,10 @@
         android:layout_marginBottom="4dp"
         android:fontFamily="@font/montserrat"
         android:hint="Заголовок" />
+
     <EditText
         android:id="@+id/message"
-        android:inputType="textShortMessage"
+        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -38,9 +40,10 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/montserrat"
-        android:lines="3"
+        android:inputType="textMultiLine"
         android:hint="Кратко расскажите \nо том, что случилось"/>
     <EditText
+        android:layout_marginHorizontal="20dp"
         android:id="@+id/address"
         android:inputType="textShortMessage"
         android:layout_width="match_parent"
@@ -51,4 +54,16 @@
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/montserrat"
         android:hint="По какому адресу это произошло?"/>
+    <EditText
+        android:layout_marginHorizontal="20dp"
+        android:id="@+id/photo"
+        android:inputType="textShortMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/montserrat"
+        android:hint="Прикрепите ссылку на картинку"/>
 </LinearLayout>
