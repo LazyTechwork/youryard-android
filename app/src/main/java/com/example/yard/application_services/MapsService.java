@@ -12,6 +12,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yard.R;
+import com.example.yard.Register;
 import com.example.yard.data.DataObject;
 import com.example.yard.data.Poll;
 import com.example.yard.utils.JSONInteractor;
@@ -24,8 +25,8 @@ public class MapsService extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps_service);
 
+        setContentView(R.layout.activity_maps_service);
         Button mButton = findViewById(R.id.nextButton);
 
         Context context = this;
@@ -53,7 +54,8 @@ public class MapsService extends AppCompatActivity {
                     data.setMypolls(my_polls);
                     jsonInteractor.writeJSON(data);
 
-                    startActivity(new Intent(MapsService.this, MapsServiceFilled.class));
+                    Register.setDefaults("polls_created", "created", MapsService.this);
+                    setContentView(R.layout.activity_maps_service_filled);
 
                 } catch (IOException e) {
                     Log.e("Maps Service", "Error occurred while reading/writing data", e);
