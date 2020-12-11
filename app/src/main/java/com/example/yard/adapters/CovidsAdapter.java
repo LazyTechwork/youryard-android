@@ -3,6 +3,7 @@ package com.example.yard.adapters;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,22 +71,9 @@ public class CovidsAdapter extends RecyclerView.Adapter<CovidsAdapter.CovidViewH
             super(itemView);
         }
 
-        public Bitmap getBitmapFromURL(String src) {
-            try {
-                URL url = new URL(src);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setDoInput(true);
-                connection.connect();
-                InputStream input = connection.getInputStream();
-                return BitmapFactory.decodeStream(input);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
         public void bind(int itemPosition) {
             Covid covid = items.get(itemPosition);
+            Log.d("COVID", "" + itemPosition + " " + items.size());
             ((TextView) itemView.findViewById(R.id.covid_header)).setText(covid.getName());
             ((TextView) itemView.findViewById(R.id.covid_city)).setText(covid.getAddress());
             ((TextView) itemView.findViewById(R.id.covid_desc)).setText(covid.getDescription());

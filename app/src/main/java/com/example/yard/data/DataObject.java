@@ -1,6 +1,12 @@
 package com.example.yard.data;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 public class DataObject {
     private ArrayList<Poll> polls;
@@ -17,6 +23,11 @@ public class DataObject {
 
     public ArrayList<Integer> getMypolls() {
         return mypolls;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public ArrayList<Poll> getMyPollsObject() {
+        return new ArrayList<>(polls.stream().filter(s -> mypolls.contains(s.getId())).collect(Collectors.toList()));
     }
 
     public void setMypolls(ArrayList<Integer> mypolls) {

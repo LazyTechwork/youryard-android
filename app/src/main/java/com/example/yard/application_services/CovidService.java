@@ -1,6 +1,7 @@
 package com.example.yard.application_services;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,12 +40,12 @@ public class CovidService extends AppCompatActivity {
             JSONInteractor jsonInteractor = new JSONInteractor(this, "data.json");
             ArrayList<Covid> covids = jsonInteractor.readJSON(DataObject.class).getCovids();
             CovidsAdapter covidsAdapter = new CovidsAdapter(this);
-            covidsAdapter.updateData(covids);
-
             RecyclerView covidsView = findViewById(R.id.covid_new_view);
             covidsView.setItemAnimator(null);
             covidsView.setLayoutManager(new LinearLayoutManager(this));
             covidsView.setAdapter(covidsAdapter);
+
+            covidsAdapter.updateData(covids);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

@@ -2,6 +2,7 @@ package com.example.yard.application_services;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,8 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yard.R;
+import com.example.yard.adapters.PollsAdapter;
 import com.example.yard.data.DataObject;
 import com.example.yard.data.Poll;
 import com.example.yard.utils.JSONInteractor;
@@ -62,6 +66,16 @@ public class MapsService extends AppCompatActivity {
 
                     builder.setNegativeButton(android.R.string.no, null).show();
                 });
+            } else {
+                PollsAdapter pollsAdapter = new PollsAdapter(this);
+                pollsAdapter.setLockedPolls(data.getMypolls());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    pollsAdapter.updateData(data.getMyPollsObject());
+                }
+
+                RecyclerView pollsView = findViewById(R.id.polls_view);
+                pollsView.setAdapter(pollsAdapter);
+                pollsView.setLayoutManager(new LinearLayoutManager(this));
             }
         } catch (FileNotFoundException e) {
             Log.e("Maps Service", "Error occurred while reading/writing data", e);
