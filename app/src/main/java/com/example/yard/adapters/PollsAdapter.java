@@ -62,7 +62,7 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
 
     public void updateData(Poll poll, int pos) {
         this.items.set(pos, poll);
-        this.notifyItemChanged(pos);
+        activity.runOnUiThread(() -> notifyItemChanged(pos, poll));
     }
 
     @Override
@@ -110,7 +110,8 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
             ImageView mImage = itemView.findViewById(R.id.imageView);
             new Thread(() -> {
                 try {
-                    mImage.setImageBitmap(getBitmapFromURL(poll.getImage()));
+                    Bitmap bitmap = getBitmapFromURL(poll.getImage());
+                    activity.runOnUiThread(() -> mImage.setImageBitmap(bitmap));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
