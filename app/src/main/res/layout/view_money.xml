@@ -8,7 +8,7 @@
     android:background="@drawable/rounded_box">
 
     <TextView
-        android:id="@+id/poll_header"
+        android:id="@+id/money_header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/poll_desc"
+        android:id="@+id/money_desc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -32,7 +32,7 @@
         android:text="Адрес или описание, короче какой-то еще один прикольный текст..........."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/poll_city" />
+        app:layout_constraintTop_toBottomOf="@+id/money_city" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -56,7 +56,7 @@
         app:layout_constraintGuide_percent="0.75" />
 
     <TextView
-        android:id="@+id/poll_city"
+        android:id="@+id/money_city"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -66,38 +66,38 @@
         android:text="Москва, пр. Ленина, дом 61"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/poll_header" />
+        app:layout_constraintTop_toBottomOf="@+id/money_header" />
 
     <Button
-        android:id="@+id/button_help"
+        android:id="@+id/money_paybtn"
         android:layout_width="0dp"
-        android:layout_marginHorizontal="32dp"
         android:layout_height="40dp"
+        android:layout_marginHorizontal="32dp"
+        android:background="@drawable/blue_button"
         android:text="Оплатить"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:background="@drawable/blue_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
-        android:scaleY="3"
-        android:progressTint="@color/green"
-        android:max="5000"
-        android:progress="4500"
-        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/money_progressbar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:max="5000"
+        android:progress="4500"
+        android:progressTint="@color/green"
+        android:scaleY="3"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/money_progresstext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -106,10 +106,10 @@
         android:text="4500 / 5000"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintBottom_toTopOf="@+id/money_progressbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/poll_desc" />
+        app:layout_constraintTop_toBottomOf="@+id/money_desc" />
 
     <TextView
         android:id="@+id/textView5"
@@ -119,10 +119,10 @@
         android:fontFamily="@font/montserrat_bold"
         android:text="300 рублей с жителя"
         android:textColor="#95000000"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintBottom_toTopOf="@+id/money_progresstext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toBottomOf="@+id/poll_desc" />
+        app:layout_constraintTop_toBottomOf="@+id/money_desc" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

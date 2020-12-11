@@ -61,10 +61,12 @@ public class Poll {
         this.description = description;
     }
 
+    @Deprecated
     public String getCity() {
         return address;
     }
 
+    @Deprecated
     public void setCity(String city) {
         this.address = city;
     }

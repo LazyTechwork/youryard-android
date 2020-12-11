@@ -5,13 +5,13 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.stream.Collectors;
 
 public class DataObject {
     private ArrayList<Poll> polls;
     private ArrayList<Integer> mypolls;
     private ArrayList<Covid> covids;
+    private ArrayList<Money> money;
 
     public ArrayList<Poll> getPolls() {
         return polls;
@@ -40,5 +40,13 @@ public class DataObject {
 
     public void setCovids(ArrayList<Covid> covids) {
         this.covids = covids;
+    }
+
+    public ArrayList<Money> getMoney() {
+        return money;
+    }
+
+    public void setMoney(ArrayList<Money> money) {
+        this.money = money;
     }
 }

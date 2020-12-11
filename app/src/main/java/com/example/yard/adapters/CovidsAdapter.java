@@ -73,7 +73,6 @@ public class CovidsAdapter extends RecyclerView.Adapter<CovidsAdapter.CovidViewH
 
         public void bind(int itemPosition) {
             Covid covid = items.get(itemPosition);
-            Log.d("COVID", "" + itemPosition + " " + items.size());
             ((TextView) itemView.findViewById(R.id.covid_header)).setText(covid.getName());
             ((TextView) itemView.findViewById(R.id.covid_city)).setText(covid.getAddress());
             ((TextView) itemView.findViewById(R.id.covid_desc)).setText(covid.getDescription());
