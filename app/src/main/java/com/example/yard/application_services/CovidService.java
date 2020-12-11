@@ -36,16 +36,15 @@ public class CovidService extends AppCompatActivity {
         mRecovered.setText(Register.getDefaults("region_recovered", CovidService.this));
 
         try {
-            RecyclerView mCovidHelpView = findViewById(R.id.covid_new_view);
-            mCovidHelpView.setItemAnimator(null);
             JSONInteractor jsonInteractor = new JSONInteractor(this, "data.json");
             ArrayList<Covid> covids = jsonInteractor.readJSON(DataObject.class).getCovids();
             CovidsAdapter covidsAdapter = new CovidsAdapter(this);
             covidsAdapter.updateData(covids);
 
             RecyclerView covidsView = findViewById(R.id.covid_new_view);
-            covidsView.setAdapter(covidsAdapter);
+            covidsView.setItemAnimator(null);
             covidsView.setLayoutManager(new LinearLayoutManager(this));
+            covidsView.setAdapter(covidsAdapter);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
