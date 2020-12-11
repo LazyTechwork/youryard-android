@@ -47,9 +47,9 @@ public class MapsService extends AppCompatActivity {
                     int newId = polls.get(polls.size() - 1).getId() + 1;
                     polls.add(new Poll(newId, 0, 0, formTitle.getText().toString(), formText.getText().toString(), formAddress.getText().toString(), "https://newtambov.ru/storage/taisia/2018/05/DSC02076.jpg"));
                     data.setPolls(polls);
-                    ArrayList<Integer> my_polls = data.getMy_polls();
+                    ArrayList<Integer> my_polls = data.getMypolls();
                     my_polls.add(newId);
-                    data.setMy_polls(my_polls);
+                    data.setMypolls(my_polls);
                     jsonInteractor.writeJSON(data);
                 } catch (IOException e) {
                     Log.e("Maps Service", "Error occurred while reading/writing data", e);

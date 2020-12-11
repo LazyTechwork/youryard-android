@@ -24,7 +24,7 @@ public class LoadingActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore fStore;
     String userID;
-    String email, password, name, surname, city, street;
+    String email, password, name, surname, city, street, region;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class LoadingActivity extends AppCompatActivity {
         surname = Register.getDefaults("user-surname", LoadingActivity.this);
         city = Register.getDefaults("user-city", LoadingActivity.this);
         street = Register.getDefaults("user-street", LoadingActivity.this);
+        region = Register.getDefaults("region_name", LoadingActivity.this);
 
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -54,17 +55,17 @@ public class LoadingActivity extends AppCompatActivity {
                             user.put("email", email);
                             user.put("name", name);
                             user.put("surname", surname);
+                            user.put("region", region);
                             user.put("city", city);
                             user.put("street", street);
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(LoadingActivity.this, "Easy", Toast.LENGTH_SHORT).show();
                                     //Maybe someday I will write something here.....
                                 }
                             });
 
-                            int milliseconds_delayed = 1200;
+                            int milliseconds_delayed = 1000;
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {

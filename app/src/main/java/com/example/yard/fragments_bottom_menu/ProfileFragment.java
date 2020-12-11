@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.yard.Login;
 import com.example.yard.R;
+import com.example.yard.Register;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -66,7 +67,15 @@ public class ProfileFragment extends Fragment {
         mExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Register.setDefaults("visited", null, getActivity());
                 startActivity(new Intent(getActivity(), Login.class));
+            }
+        });
+
+        mEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

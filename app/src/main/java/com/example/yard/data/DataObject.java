@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class DataObject {
     private ArrayList<Poll> polls;
-    private ArrayList<Integer> my_polls;
+    private ArrayList<Integer> mypolls;
+    private ArrayList<Covid> covids;
 
     public ArrayList<Poll> getPolls() {
         return polls;
@@ -14,11 +15,19 @@ public class DataObject {
         this.polls = polls;
     }
 
-    public ArrayList<Integer> getMy_polls() {
-        return my_polls;
+    public ArrayList<Integer> getMypolls() {
+        return mypolls;
     }
 
-    public void setMy_polls(ArrayList<Integer> my_polls) {
-        this.my_polls = my_polls;
+    public void setMypolls(ArrayList<Integer> mypolls) {
+        this.mypolls = mypolls;
+    }
+
+    public ArrayList<Covid> getCovids() {
+        return covids;
+    }
+
+    public void setCovids(ArrayList<Covid> covids) {
+        this.covids = covids;
     }
 }

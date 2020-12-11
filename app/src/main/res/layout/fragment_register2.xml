@@ -8,8 +8,46 @@
     tools:context=".fragments_registration.RegisterFragment2">
 
     <EditText
+        android:id="@+id/editTextPersonStreet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="Улица"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="#80FFFFFF"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPersonCity"
+        app:layout_constraintVertical_bias="0.08" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonRegion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button_shape"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:inputType="textPersonName"
+        android:text="Выбрать регион"
+        android:textColor="@color/main_blue"
+        android:textSize="18sp"
+        android:layout_marginHorizontal="50dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <EditText
         android:id="@+id/editTextPersonCity"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:ems="10"
@@ -18,40 +56,23 @@
         android:inputType="textPersonName"
         android:textColor="@color/white"
         android:textColorHint="#80FFFFFF"
+        android:layout_marginHorizontal="50dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.2" />
-
-    <EditText
-        android:id="@+id/editTextPersonStreet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:backgroundTint="@color/white"
-        android:fontFamily="@font/montserrat"
-        android:hint="Улица"
-        android:textColorHint="#80FFFFFF"
-        android:textColor="@color/white"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPersonCity"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegion"
+        app:layout_constraintVertical_bias="0.08" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:src="@drawable/ic_yard_onboarding_geo_vertical"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.1"
+        app:srcCompat="@drawable/ic_yard_onboarding_geo_vertical" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
