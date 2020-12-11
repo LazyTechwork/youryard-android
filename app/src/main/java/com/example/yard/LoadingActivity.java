@@ -57,6 +57,7 @@ public class LoadingActivity extends AppCompatActivity {
                             user.put("surname", surname);
                             user.put("region", region);
                             user.put("city", city);
+                            user.put("index", Register.getDefaults("region_index", LoadingActivity.this));
                             user.put("street", street);
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

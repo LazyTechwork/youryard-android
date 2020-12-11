@@ -71,11 +71,8 @@ public class RegisterFragment2 extends Fragment {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     try {
                                         JSONObject jsonObject = array.getJSONObject(i);
+                                        Register.setDefaults("region_index", String.valueOf(i), getActivity());
                                         Register.setDefaults("region_name", jsonObject.getString("region"), getActivity());
-                                        Register.setDefaults("region_infected", String.valueOf(jsonObject.getInt("infected")), getActivity());
-                                        Register.setDefaults("region_recovered", String.valueOf(jsonObject.getInt("recovered")), getActivity());
-                                        Register.setDefaults("region_deceased", String.valueOf(jsonObject.getInt("deceased")), getActivity());
-
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
