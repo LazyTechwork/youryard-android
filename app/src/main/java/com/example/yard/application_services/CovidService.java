@@ -41,10 +41,11 @@ import java.util.ArrayList;
 
 public class CovidService extends AppCompatActivity {
 
-    String userID;
+    String userID, url;
     FirebaseAuth mAuth;
     Integer region_index;
     FirebaseFirestore fStore;
+    Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +56,16 @@ public class CovidService extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         userID = mAuth.getCurrentUser().getUid();
 
+        //GETTING ACCESS TO FIRESTORE USER DATA
         DocumentReference documentReference = fStore.collection("users").document(userID);
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 region_index = Integer.valueOf(value.getString("index"));
 
+                //GETTING DATA ABOUT COVID19 SITUATION IN PARTICULAR REGION
                 RequestQueue requestQueue = Volley.newRequestQueue(CovidService.this);
-                String url = "https://api.apify.com/v2/key-value-stores/1brJ0NLbQaJKPTWMO/records/LATEST?disableRedirect=true";
+                url = "https://api.apify.com/v2/key-value-stores/1brJ0NLbQaJKPTWMO/records/LATEST?disableRedirect=true";
 
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
@@ -95,7 +98,7 @@ public class CovidService extends AppCompatActivity {
             }
         });
 
-
+        //ADDING ELEMENTS INTO RECYCLERVIEW
         JSONInteractor jsonInteractor = new JSONInteractor(this, "data.json");
         ArrayList<Covid> covids = new ArrayList<>();
         try {
@@ -104,26 +107,26 @@ public class CovidService extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        Button mButton;
-        mButton = findViewById(R.id.button);
-
         RecyclerView covidsView = findViewById(R.id.covid_new_view);
         CovidsAdapter covidsAdapter = new CovidsAdapter(this);
         covidsAdapter.updateData(covids);
         covidsView.setAdapter(covidsAdapter);
         covidsView.setItemAnimator(null);
         covidsView.setLayoutManager(new LinearLayoutManager(this));
-
         ArrayList<Covid> finalCovids = covids;
+
+
+        //ALERT FOR CREATING NEW POLLS
+        mButton = findViewById(R.id.button);
         mButton.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(CovidService.this);
             View view = getLayoutInflater().inflate(R.layout.alert_create_statement_covid, null);
             builder.setView(view);
 
             builder.setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                if (((EditText) view.findViewById(R.id.title)).getText().toString().length()==0 || ((EditText) view.findViewById(R.id.message)).getText().toString().length()==0 || ((EditText) view.findViewById(R.id.address)).getText().toString().length()==0) {
+                if (((EditText) view.findViewById(R.id.title)).getText().toString().length() == 0 || ((EditText) view.findViewById(R.id.message)).getText().toString().length() == 0 || ((EditText) view.findViewById(R.id.address)).getText().toString().length() == 0) {
                     Toast.makeText(this, "Нельзя оставлять поля заявки пустыми", Toast.LENGTH_SHORT).show();
-                } else{
+                } else {
                     covidsAdapter.addData(new Covid(finalCovids.get(finalCovids.size() - 1).getId() + 1, ((EditText) view.findViewById(R.id.title)).getText().toString(), ((EditText) view.findViewById(R.id.message)).getText().toString(), ((EditText) view.findViewById(R.id.address)).getText().toString()));
                     try {
                         DataObject data = jsonInteractor.readJSON(DataObject.class);
@@ -133,7 +136,6 @@ public class CovidService extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-
             });
 
             builder.setNegativeButton(android.R.string.no, null).show();

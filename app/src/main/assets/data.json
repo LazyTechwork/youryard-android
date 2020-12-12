@@ -57,12 +57,12 @@
     },
     {
       "id": 6,
-      "name": "Обновить фасады домов",
-      "description": "Выделение ЖКХ средств на реализацию обшития дома новыми фасадами",
-      "address": "Москва, ул. Ленина, дом 16",
-      "pros": 252,
-      "cons": 3,
-      "image": "https://newtambov.ru/storage/taisia/2018/05/DSC02076.jpg",
+      "name": "Хотим кушать",
+      "description": "Привет организаторам и проверяющим, как у вас дела?))",
+      "address": "Казань, ул. Деревня Универсиады",
+      "pros": 228,
+      "cons": 18,
+      "image": "https://sun9-33.userapi.com/impg/RPD2MDaLMJbTiBKrhfOkdCATdOuVrU-bnNDJ8g/O1n8cImDN34.jpg?size=1280x960&quality=96&proxy=1&sign=6defaabefb91e60fa9600a86267ea9be&type=album",
       "isVoted": false,
       "votedPros": false
     }

@@ -1,11 +1,10 @@
 package com.example.yard;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -18,9 +17,9 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (Register.getDefaults("visited", SplashActivity.this)==null){
+                if (Register.getDefaults("visited", SplashActivity.this) == null) {
                     startActivity(new Intent(SplashActivity.this, Login.class));
-                } else{
+                } else {
                     startActivity(new Intent(SplashActivity.this, MainActivity.class));
                 }
                 finish();

@@ -31,10 +31,10 @@ import java.util.stream.Collectors;
 
 public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHolder> {
 
-    private ArrayList<Poll> items;
-    private ArrayList<Integer> lockedPolls;
     private final Activity activity;
     private final JSONInteractor dataInteractor;
+    private ArrayList<Poll> items;
+    private ArrayList<Integer> lockedPolls;
 
     public PollsAdapter(ArrayList<Poll> items, Activity activity) {
         this.items = items;

@@ -1,12 +1,12 @@
 package com.example.yard.application_services;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yard.R;
 
-public class MapsServiceFilled extends AppCompatActivity {
+public class MyPollsServiceFilled extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

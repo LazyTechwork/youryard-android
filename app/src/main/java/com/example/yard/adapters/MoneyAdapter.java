@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 public class MoneyAdapter extends RecyclerView.Adapter<MoneyAdapter.MoneyViewHolder> {
 
-    private ArrayList<Money> items;
     private final Activity activity;
+    private ArrayList<Money> items;
 
     public MoneyAdapter(ArrayList<Money> items, Activity activity) {
         this.items = items;

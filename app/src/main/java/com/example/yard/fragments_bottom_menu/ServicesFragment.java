@@ -2,20 +2,19 @@ package com.example.yard.fragments_bottom_menu;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import com.example.yard.R;
 import com.example.yard.application_services.CovidService;
-import com.example.yard.application_services.MapsService;
+import com.example.yard.application_services.MyPollsService;
 import com.example.yard.application_services.MoneyService;
 import com.example.yard.application_services.PollsService;
-import com.example.yard.R;
 
 public class ServicesFragment extends Fragment {
 
@@ -48,7 +47,7 @@ public class ServicesFragment extends Fragment {
         mImageMaps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), MapsService.class));
+                startActivity(new Intent(getActivity(), MyPollsService.class));
             }
         });
 

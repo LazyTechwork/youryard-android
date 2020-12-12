@@ -24,7 +24,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MapsService extends AppCompatActivity {
+public class MyPollsService extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +39,9 @@ public class MapsService extends AppCompatActivity {
             if (data.getMypolls().size() == 0) {
                 Button mButton = findViewById(R.id.nextButton);
                 mButton.setOnClickListener(v -> {
-                    //CREATE ALERT
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MapsService.this);
+
+                    //CREATE ALERT FOR CREATING POLLS
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MyPollsService.this);
                     View view = getLayoutInflater().inflate(R.layout.alert_create_statement, null);
                     builder.setView(view);
 
@@ -75,7 +76,7 @@ public class MapsService extends AppCompatActivity {
                 Button mButton = findViewById(R.id.nextButton);
                 mButton.setOnClickListener(v -> {
                     //CREATE ALERT
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MapsService.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MyPollsService.this);
                     View view = getLayoutInflater().inflate(R.layout.alert_create_statement, null);
                     builder.setView(view);
 

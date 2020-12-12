@@ -16,8 +16,8 @@ import java.util.ArrayList;
 
 public class CovidsAdapter extends RecyclerView.Adapter<CovidsAdapter.CovidViewHolder> {
 
-    private ArrayList<Covid> items;
     private final Activity activity;
+    private ArrayList<Covid> items;
 
     public CovidsAdapter(ArrayList<Covid> items, Activity activity) {
         this.items = items;

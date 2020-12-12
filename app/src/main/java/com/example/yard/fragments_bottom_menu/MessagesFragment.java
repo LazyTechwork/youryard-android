@@ -3,16 +3,6 @@ package com.example.yard.fragments_bottom_menu;
 import android.app.AlertDialog;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,20 +12,23 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.yard.adapters.MessagesAdapter;
-import com.example.yard.application_services.MapsService;
-import com.example.yard.data.Message;
-import com.example.yard.data.Poll;
-import com.example.yard.messages_fragments.MessagesList;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.yard.R;
+import com.example.yard.adapters.MessagesAdapter;
+import com.example.yard.data.Message;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -44,20 +37,17 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class MessagesFragment extends Fragment {
 
-    private FirebaseAuth mAuth;
-    private FirebaseFirestore fStore;
     String userID, current_user_name, user_name;
     String recipient, date;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore fStore;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -171,7 +161,7 @@ public class MessagesFragment extends Fragment {
                 builder.setPositiveButton("Отправить", (dialog, which) -> {
                     if (recipient.equals(user_name)) {
                         Toast.makeText(getActivity(), "Нельзя отправить сообщение самому себе", Toast.LENGTH_SHORT).show();
-                    } else{
+                    } else {
                         String message = mEditTextMessage.getText().toString();
                         Map<String, Object> m = new HashMap<>();
                         m.put("message_text", message);

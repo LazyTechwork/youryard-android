@@ -1,13 +1,7 @@
 package com.example.yard.fragments_registration;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +9,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.yard.Login;
 import com.example.yard.R;
 import com.example.yard.Register;
 
@@ -62,7 +59,7 @@ public class RegisterFragment2 extends Fragment {
                             builder.setTitle("Выбор региона").setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    
+
                                 }
                             });
 
@@ -102,23 +99,23 @@ public class RegisterFragment2 extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (Register.getDefaults("region_name", getActivity()) != null){
+                if (Register.getDefaults("region_name", getActivity()) != null) {
                     //SET DEFAULTS
                     Register.setDefaults("user-city", mCity.getText().toString().trim(), getActivity());
                     Register.setDefaults("user-street", mStreet.getText().toString().trim(), getActivity());
                     //CHANGE FRAGMENT
 
-                    if (mCity.getText().toString().isEmpty()){
+                    if (mCity.getText().toString().isEmpty()) {
                         Toast.makeText(getActivity(), "Название города не должно быть пустым", Toast.LENGTH_SHORT).show();
-                    } else if (mStreet.getText().toString().isEmpty()){
+                    } else if (mStreet.getText().toString().isEmpty()) {
                         Toast.makeText(getActivity(), "Название улицы не должно быть пустым", Toast.LENGTH_SHORT).show();
-                    } else{
-                        Register.mProgressBar.setProgress(Register.mProgressBar.getProgress()+1);
+                    } else {
+                        Register.mProgressBar.setProgress(Register.mProgressBar.getProgress() + 1);
                         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.container, new RegisterFragment3());
                         fragmentTransaction.commit();
                     }
-                } else{
+                } else {
                     Toast.makeText(getActivity(), "Необходимо выбрать регион", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -127,7 +124,7 @@ public class RegisterFragment2 extends Fragment {
         Register.mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Register.mProgressBar.setProgress(Register.mProgressBar.getProgress()-1);
+                Register.mProgressBar.setProgress(Register.mProgressBar.getProgress() - 1);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.container, new RegisterFragment1());
                 fragmentTransaction.commit();

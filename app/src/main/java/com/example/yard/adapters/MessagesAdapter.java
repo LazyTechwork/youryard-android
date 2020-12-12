@@ -10,15 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yard.R;
-import com.example.yard.data.Covid;
 import com.example.yard.data.Message;
 
 import java.util.ArrayList;
 
 public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MessagesViewHolder> {
 
-    private ArrayList<Message> items;
     private final Activity activity;
+    private ArrayList<Message> items;
 
     public MessagesAdapter(ArrayList<Message> items, Activity activity) {
         this.items = items;

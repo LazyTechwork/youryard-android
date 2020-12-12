@@ -30,19 +30,19 @@ public class MoneyService extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_money_service);
 
+        //SET JSON DATA INTO RECYCLERVIEW
         MoneyAdapter moneyAdapter = new MoneyAdapter(this);
         try {
             DataObject data = new JSONInteractor(this, "data.json").readJSON(DataObject.class);
             moneyAdapter.updateData(data.getMoney());
-
             RecyclerView moneyView = findViewById(R.id.money_view);
             moneyView.setAdapter(moneyAdapter);
             moneyView.setLayoutManager(new LinearLayoutManager(this));
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
+        //CREATING NEW APPLICATION FOR COLLECTING MONEY
         mCreateButton = findViewById(R.id.createButton);
         mCreateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,10 +58,11 @@ public class MoneyService extends AppCompatActivity {
                 EditText formOverallSum = view.findViewById(R.id.overall_sum);
                 EditText formPerPerson = view.findViewById(R.id.sum_per_person);
 
+                //ADD DATA ABOUT NEW APPLICATIONS
                 builder.setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                    if (formOverallSum.getText().toString().length()==0 || formTitle.getText().toString().length()==0 || formText.getText().toString().length()==0 || formAddress.getText().toString().length()==0 || formPerPerson.getText().toString().length()==0) {
+                    if (formOverallSum.getText().toString().length() == 0 || formTitle.getText().toString().length() == 0 || formText.getText().toString().length() == 0 || formAddress.getText().toString().length() == 0 || formPerPerson.getText().toString().length() == 0) {
                         Toast.makeText(MoneyService.this, "Нельзя оставлять поля заявки пустыми", Toast.LENGTH_SHORT).show();
-                    } else{
+                    } else {
                         JSONInteractor jsonInteractor = new JSONInteractor(getApplicationContext(), "data.json");
                         try {
                             DataObject data = null;

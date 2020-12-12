@@ -25,13 +25,13 @@ public class DataObject {
         return mypolls;
     }
 
+    public void setMypolls(ArrayList<Integer> mypolls) {
+        this.mypolls = mypolls;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public ArrayList<Poll> getMyPollsObject() {
         return new ArrayList<>(polls.stream().filter(s -> mypolls.contains(s.getId())).collect(Collectors.toList()));
-    }
-
-    public void setMypolls(ArrayList<Integer> mypolls) {
-        this.mypolls = mypolls;
     }
 
     public ArrayList<Covid> getCovids() {
