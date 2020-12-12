@@ -8,12 +8,6 @@
         app:showAsAction="ifRoom">
     </item>
     <item
-        android:id="@+id/notifications"
-        android:title="Уведомления"
-        android:icon="@drawable/ic_icon_notifications"
-        app:showAsAction="ifRoom">
-    </item>
-    <item
         android:id="@+id/servises"
         android:title="Сервисы"
         android:icon="@drawable/ic_icon_servises"

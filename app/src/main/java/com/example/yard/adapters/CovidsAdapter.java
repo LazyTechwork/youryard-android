@@ -56,6 +56,15 @@ public class CovidsAdapter extends RecyclerView.Adapter<CovidsAdapter.CovidViewH
         this.notifyItemChanged(pos);
     }
 
+    public void addData(Covid covid) {
+        this.items.add(covid);
+        this.notifyItemChanged(this.items.size() - 1);
+    }
+
+    public ArrayList<Covid> getItems() {
+        return items;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull CovidViewHolder holder, int position) {
         holder.bind(position);

@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.yard.application_services.CovidService;
-import com.example.yard.application_services.DobroService;
 import com.example.yard.application_services.MapsService;
 import com.example.yard.application_services.MoneyService;
 import com.example.yard.application_services.PollsService;
@@ -29,7 +28,6 @@ public class ServicesFragment extends Fragment {
 
         mImageCovid = v.findViewById(R.id.covid_image);
         mImageMoney = v.findViewById(R.id.money_image);
-        mImageDobro = v.findViewById(R.id.dobro_image);
         mImageMaps = v.findViewById(R.id.maps_image);
         mImagePools = v.findViewById(R.id.pools_image);
 
@@ -44,13 +42,6 @@ public class ServicesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), MoneyService.class));
-            }
-        });
-
-        mImageDobro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), DobroService.class));
             }
         });
 

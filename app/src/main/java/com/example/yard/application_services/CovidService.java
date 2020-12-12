@@ -1,9 +1,7 @@
 package com.example.yard.application_services;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,12 +20,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.yard.R;
-import com.example.yard.Register;
 import com.example.yard.adapters.CovidsAdapter;
-import com.example.yard.adapters.PollsAdapter;
 import com.example.yard.data.Covid;
 import com.example.yard.data.DataObject;
-import com.example.yard.data.Poll;
 import com.example.yard.utils.JSONInteractor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -101,41 +96,43 @@ public class CovidService extends AppCompatActivity {
         });
 
 
+        JSONInteractor jsonInteractor = new JSONInteractor(this, "data.json");
+        ArrayList<Covid> covids = new ArrayList<>();
         try {
-            RecyclerView mCovidHelpView = findViewById(R.id.covid_new_view);
-            mCovidHelpView.setItemAnimator(null);
-            JSONInteractor jsonInteractor = new JSONInteractor(this, "data.json");
-            ArrayList<Covid> covids = jsonInteractor.readJSON(DataObject.class).getCovids();
-            CovidsAdapter covidsAdapter = new CovidsAdapter(this);
-            covidsAdapter.updateData(covids);
-
-            RecyclerView covidsView = findViewById(R.id.covid_new_view);
-            covidsView.setAdapter(covidsAdapter);
-            covidsView.setLayoutManager(new LinearLayoutManager(this));
+            covids = jsonInteractor.readJSON(DataObject.class).getCovids();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
         Button mButton;
         mButton = findViewById(R.id.button);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.app.AlertDialog.Builder builder = new AlertDialog.Builder(CovidService.this);
-                View view = getLayoutInflater().inflate(R.layout.alert_create_statement_covid, null);
-                builder.setView(view);
 
-                EditText formTitle = view.findViewById(R.id.title);
-                EditText formText = view.findViewById(R.id.message);
-                EditText formAddress = view.findViewById(R.id.address);
-                EditText formPerson = view.findViewById(R.id.person);
+        RecyclerView covidsView = findViewById(R.id.covid_new_view);
+        CovidsAdapter covidsAdapter = new CovidsAdapter(this);
+        covidsAdapter.updateData(covids);
+        covidsView.setAdapter(covidsAdapter);
+        covidsView.setItemAnimator(null);
+        covidsView.setLayoutManager(new LinearLayoutManager(this));
 
-                builder.setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                    //write here
-                });
+        ArrayList<Covid> finalCovids = covids;
+        mButton.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(CovidService.this);
+            View view = getLayoutInflater().inflate(R.layout.alert_create_statement_covid, null);
+            builder.setView(view);
 
-                builder.setNegativeButton(android.R.string.no, null).show();
-            }
+            builder.setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                covidsAdapter.addData(new Covid(finalCovids.get(finalCovids.size() - 1).getId() + 1, ((EditText) view.findViewById(R.id.title)).getText().toString(), ((EditText) view.findViewById(R.id.message)).getText().toString(), ((EditText) view.findViewById(R.id.address)).getText().toString()));
+                try {
+                    DataObject data = jsonInteractor.readJSON(DataObject.class);
+                    data.setCovids(covidsAdapter.getItems());
+                    jsonInteractor.writeJSON(data);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            });
+
+            builder.setNegativeButton(android.R.string.no, null).show();
         });
 
     }

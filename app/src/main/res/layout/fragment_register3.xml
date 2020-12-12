@@ -14,7 +14,7 @@
         android:backgroundTint="@color/white"
         android:ems="10"
         android:fontFamily="@font/montserrat"
-        android:hint="Emain"
+        android:hint="Email"
         android:inputType="textPersonName"
         android:textColor="@color/white"
         android:textColorHint="#80FFFFFF"

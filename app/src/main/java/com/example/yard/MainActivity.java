@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yard.fragments_bottom_menu.MessagesFragment;
-import com.example.yard.fragments_bottom_menu.NotificationsFragment;
 import com.example.yard.fragments_bottom_menu.ProfileFragment;
 import com.example.yard.fragments_bottom_menu.ServicesFragment;
 import com.example.yard.utils.JSONInteractor;
@@ -57,10 +56,6 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.servises:
                         fragment = new ServicesFragment();
-                        loadFragment(fragment);
-                        return true;
-                    case R.id.notifications:
-                        fragment = new NotificationsFragment();
                         loadFragment(fragment);
                         return true;
                     case R.id.profile:
