@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -58,18 +59,22 @@ public class MoneyService extends AppCompatActivity {
                 EditText formPerPerson = view.findViewById(R.id.sum_per_person);
 
                 builder.setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                    JSONInteractor jsonInteractor = new JSONInteractor(getApplicationContext(), "data.json");
-                    try {
-                        DataObject data = null;
-                        data = jsonInteractor.readJSON(DataObject.class);
-                        ArrayList<Money> money = data.getMoney();
-                        int newId = money.get(money.size() - 1).getId() + 1;
-                        money.add(new Money(newId, 0, Integer.parseInt(formOverallSum.getText().toString()), formTitle.getText().toString(), formText.getText().toString(), formAddress.getText().toString(), formPerPerson.getText().toString(), false));
-                        data.setMoney(money);
-                        jsonInteractor.writeJSON(data);
-                        moneyAdapter.updateData(money);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if (formOverallSum.getText().toString().length()==0 || formTitle.getText().toString().length()==0 || formText.getText().toString().length()==0 || formAddress.getText().toString().length()==0 || formPerPerson.getText().toString().length()==0) {
+                        Toast.makeText(MoneyService.this, "Нельзя оставлять поля заявки пустыми", Toast.LENGTH_SHORT).show();
+                    } else{
+                        JSONInteractor jsonInteractor = new JSONInteractor(getApplicationContext(), "data.json");
+                        try {
+                            DataObject data = null;
+                            data = jsonInteractor.readJSON(DataObject.class);
+                            ArrayList<Money> money = data.getMoney();
+                            int newId = money.get(money.size() - 1).getId() + 1;
+                            money.add(new Money(newId, 0, Integer.parseInt(formOverallSum.getText().toString()), formTitle.getText().toString(), formText.getText().toString(), formAddress.getText().toString(), formPerPerson.getText().toString(), false));
+                            data.setMoney(money);
+                            jsonInteractor.writeJSON(data);
+                            moneyAdapter.updateData(money);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
 

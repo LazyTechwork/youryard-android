@@ -169,20 +169,24 @@ public class MessagesFragment extends Fragment {
 
 
                 builder.setPositiveButton("Отправить", (dialog, which) -> {
-                    String message = mEditTextMessage.getText().toString();
-                    Map<String, Object> m = new HashMap<>();
-                    m.put("message_text", message);
-                    m.put("message_recipient", recipient);
-                    m.put("message_sender", user_name);
-                    date = Long.toString(new Date().getTime());
-                    m.put("message_date", date);
+                    if (recipient.equals(user_name)) {
+                        Toast.makeText(getActivity(), "Нельзя отправить сообщение самому себе", Toast.LENGTH_SHORT).show();
+                    } else{
+                        String message = mEditTextMessage.getText().toString();
+                        Map<String, Object> m = new HashMap<>();
+                        m.put("message_text", message);
+                        m.put("message_recipient", recipient);
+                        m.put("message_sender", user_name);
+                        date = Long.toString(new Date().getTime());
+                        m.put("message_date", date);
 
-                    documentReference.set(m).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            //Maybe someday I will write something here.....
-                        }
-                    });
+                        documentReference.set(m).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                //Maybe someday I will write something here.....
+                            }
+                        });
+                    }
                 });
 
                 builder.setNegativeButton("Отмена", (dialog, which) -> {

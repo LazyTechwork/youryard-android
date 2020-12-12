@@ -61,7 +61,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        Button mEdit = v.findViewById(R.id.edit);
         Button mExit = v.findViewById(R.id.exit);
 
         mExit.setOnClickListener(new View.OnClickListener() {
@@ -69,13 +68,6 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 Register.setDefaults("visited", null, getActivity());
                 startActivity(new Intent(getActivity(), Login.class));
-            }
-        });
-
-        mEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
 

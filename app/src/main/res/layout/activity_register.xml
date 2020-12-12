@@ -12,11 +12,13 @@
         android:layout_width="130dp"
         android:layout_height="50dp"
         android:background="@drawable/round_button_shape"
+
         android:fontFamily="@font/montserrat"
         android:text="Далее →"
         android:textAllCaps="false"
         android:textColor="@color/light_grey"
         android:textSize="18sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.426"
@@ -29,11 +31,13 @@
         android:layout_width="130dp"
         android:layout_height="50dp"
         android:background="@drawable/round_button_shape"
+
         android:fontFamily="@font/montserrat"
         android:text="← Назад"
         android:textAllCaps="false"
         android:textColor="@color/light_grey"
         android:textSize="18sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"

@@ -38,8 +38,9 @@
             android:id="@+id/user_profile_image"
             android:layout_width="160dp"
             android:layout_height="150dp"
-            app:srcCompat="@drawable/ic_male_icon" />
+            android:src="@drawable/kitten" />
     </androidx.cardview.widget.CardView>
+
 
     <TextView
         android:id="@+id/textView"
@@ -58,16 +59,12 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_margin="16dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/edit"
+        app:layout_constraintBottom_toTopOf="@+id/exit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -217,39 +214,23 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/edit"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/green_button"
-        android:fontFamily="@font/montserrat_bold"
-        android:padding="10dp"
-        android:text="Редактировать ✎"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/exit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/red_button"
-        android:fontFamily="@font/montserrat_bold"
         android:padding="10dp"
+
+        android:fontFamily="@font/montserrat_bold"
         android:text="Выход ⏎"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="14sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline8" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"

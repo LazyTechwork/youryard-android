@@ -8,7 +8,6 @@
     tools:context=".SplashActivity">
 
     <ImageView
-        android:id="@+id/imageView5"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,4 +15,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_yard_logo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -101,20 +101,25 @@ public class RegisterFragment2 extends Fragment {
         Register.mNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //SET DEFAULTS
-                Register.setDefaults("user-city", mCity.getText().toString().trim(), getActivity());
-                Register.setDefaults("user-street", mStreet.getText().toString().trim(), getActivity());
-                //CHANGE FRAGMENT
-                
-                if (mCity.getText().toString().isEmpty()){
-                    Toast.makeText(getActivity(), "Название города не должно быть пустым", Toast.LENGTH_SHORT).show();
-                } else if (mStreet.getText().toString().isEmpty()){
-                    Toast.makeText(getActivity(), "Название улицы не должно быть пустым", Toast.LENGTH_SHORT).show();
+
+                if (Register.getDefaults("region_name", getActivity()) != null){
+                    //SET DEFAULTS
+                    Register.setDefaults("user-city", mCity.getText().toString().trim(), getActivity());
+                    Register.setDefaults("user-street", mStreet.getText().toString().trim(), getActivity());
+                    //CHANGE FRAGMENT
+
+                    if (mCity.getText().toString().isEmpty()){
+                        Toast.makeText(getActivity(), "Название города не должно быть пустым", Toast.LENGTH_SHORT).show();
+                    } else if (mStreet.getText().toString().isEmpty()){
+                        Toast.makeText(getActivity(), "Название улицы не должно быть пустым", Toast.LENGTH_SHORT).show();
+                    } else{
+                        Register.mProgressBar.setProgress(Register.mProgressBar.getProgress()+1);
+                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.container, new RegisterFragment3());
+                        fragmentTransaction.commit();
+                    }
                 } else{
-                    Register.mProgressBar.setProgress(Register.mProgressBar.getProgress()+1);
-                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.container, new RegisterFragment3());
-                    fragmentTransaction.commit();
+                    Toast.makeText(getActivity(), "Необходимо выбрать регион", Toast.LENGTH_SHORT).show();
                 }
             }
         });

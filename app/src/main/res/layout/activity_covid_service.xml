@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".application_services.CovidService">
 
+    <!-- Guidelines-->
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline12"
         android:layout_width="wrap_content"
@@ -20,21 +22,14 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
-    <TextView
-        android:id="@+id/textView_update"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.25" />
+
+    <!-- Covid info layout-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0sp"
@@ -44,36 +39,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.99" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.65" />
-
-        <TextView
-            android:id="@+id/textView_region"
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
-            android:gravity="center"
-            android:paddingHorizontal="10sp"
-            android:text="Республика Татарстан"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline9"
-            app:layout_constraintEnd_toStartOf="@+id/guideline4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline9"
@@ -96,37 +61,72 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.66" />
 
-        <TextView
-            android:id="@+id/textView_infected"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.99" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <TextView
+            android:id="@+id/textView_region"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingHorizontal="10sp"
+
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Республика Татарстан"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+
+            app:layout_constraintBottom_toTopOf="@+id/guideline9"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
             android:fontFamily="@font/montserrat"
             android:text="Заражений"
             android:textColor="@color/black"
+
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintEnd_toStartOf="@+id/guideline7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/guideline10" />
 
         <TextView
-            android:id="@+id/textView_recovered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:fontFamily="@font/montserrat"
             android:text="Выздоровело"
             android:textColor="@color/green"
+
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="@+id/guideline7"
             app:layout_constraintTop_toTopOf="@id/guideline10" />
 
         <TextView
-            android:id="@+id/textView_deceased"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:fontFamily="@font/montserrat"
             android:text="Смертей"
             android:textColor="@color/red"
+
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
@@ -136,23 +136,25 @@
             android:id="@+id/textView_infected_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="0"
             android:textColor="@color/light_grey"
+
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_infected" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textView_recovered_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="0"
             android:textColor="@color/light_grey"
+
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toBottomOf="@+id/textView_recovered" />
+            app:layout_constraintStart_toStartOf="@+id/guideline7" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline10"
@@ -165,21 +167,25 @@
             android:id="@+id/textView_deceased_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="0"
             android:textColor="@color/light_grey"
+
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline8"
-            app:layout_constraintTop_toBottomOf="@+id/textView_deceased" />
+            app:layout_constraintStart_toStartOf="@+id/guideline8" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!--Leave statement block-->
+
     <TextView
-        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_bold"
+
         android:text="Заявки на помощь"
         android:textColor="@color/black"
+
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="parent"

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -48,19 +49,23 @@ public class MapsService extends AppCompatActivity {
                     EditText formAddress = view.findViewById(R.id.address);
 
                     builder.setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                        try {
-                            ArrayList<Poll> polls = data.getPolls();
-                            int newId = polls.get(polls.size() - 1).getId() + 1;
-                            polls.add(new Poll(newId, 1, 0, formTitle.getText().toString(), formText.getText().toString(), formAddress.getText().toString(), "https://newtambov.ru/storage/taisia/2018/05/DSC02076.jpg"));
-                            data.setPolls(polls);
-                            ArrayList<Integer> my_polls = data.getMypolls();
-                            my_polls.add(newId);
-                            data.setMypolls(my_polls);
-                            jsonInteractor.writeJSON(data);
+                        if (formTitle.getText().toString().length() == 0 || formText.getText().toString().length() == 0 || formAddress.getText().toString().length() == 0) {
+                            Toast.makeText(this, "Нельзя оставлять поля заявки пустыми", Toast.LENGTH_SHORT).show();
+                        } else {
+                            try {
+                                ArrayList<Poll> polls = data.getPolls();
+                                int newId = polls.get(polls.size() - 1).getId() + 1;
+                                polls.add(new Poll(newId, 1, 0, formTitle.getText().toString(), formText.getText().toString(), formAddress.getText().toString(), "https://newtambov.ru/storage/taisia/2018/05/DSC02076.jpg"));
+                                data.setPolls(polls);
+                                ArrayList<Integer> my_polls = data.getMypolls();
+                                my_polls.add(newId);
+                                data.setMypolls(my_polls);
+                                jsonInteractor.writeJSON(data);
 
-                            activity.recreate();
-                        } catch (IOException e) {
-                            Log.e("Maps Service", "Error occurred while reading/writing data", e);
+                                activity.recreate();
+                            } catch (IOException e) {
+                                Log.e("Maps Service", "Error occurred while reading/writing data", e);
+                            }
                         }
                     });
 
@@ -79,19 +84,23 @@ public class MapsService extends AppCompatActivity {
                     EditText formAddress = view.findViewById(R.id.address);
 
                     builder.setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                        try {
-                            ArrayList<Poll> polls = data.getPolls();
-                            int newId = polls.get(polls.size() - 1).getId() + 1;
-                            polls.add(new Poll(newId, 1, 0, formTitle.getText().toString(), formText.getText().toString(), formAddress.getText().toString(), "https://newtambov.ru/storage/taisia/2018/05/DSC02076.jpg"));
-                            data.setPolls(polls);
-                            ArrayList<Integer> my_polls = data.getMypolls();
-                            my_polls.add(newId);
-                            data.setMypolls(my_polls);
-                            jsonInteractor.writeJSON(data);
+                        if (formTitle.getText().toString().length() == 0 || formText.getText().toString().length() == 0 || formAddress.getText().toString().length() == 0) {
+                            Toast.makeText(this, "Нельзя оставлять поля заявки пустыми", Toast.LENGTH_SHORT).show();
+                        } else {
+                            try {
+                                ArrayList<Poll> polls = data.getPolls();
+                                int newId = polls.get(polls.size() - 1).getId() + 1;
+                                polls.add(new Poll(newId, 1, 0, formTitle.getText().toString(), formText.getText().toString(), formAddress.getText().toString(), "https://newtambov.ru/storage/taisia/2018/05/DSC02076.jpg"));
+                                data.setPolls(polls);
+                                ArrayList<Integer> my_polls = data.getMypolls();
+                                my_polls.add(newId);
+                                data.setMypolls(my_polls);
+                                jsonInteractor.writeJSON(data);
 
-                            activity.recreate();
-                        } catch (IOException e) {
-                            Log.e("Maps Service", "Error occurred while reading/writing data", e);
+                                activity.recreate();
+                            } catch (IOException e) {
+                                Log.e("Maps Service", "Error occurred while reading/writing data", e);
+                            }
                         }
                     });
                     builder.setNegativeButton(android.R.string.no, null).show();

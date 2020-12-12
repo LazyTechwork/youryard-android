@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:ems="10"
+
         android:fontFamily="@font/montserrat"
         android:hint="Email"
         android:inputType="textPersonName"
@@ -33,6 +34,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:ems="10"
+
         android:fontFamily="@font/montserrat"
         android:hint="Пароль"
         android:textColor="@color/white"

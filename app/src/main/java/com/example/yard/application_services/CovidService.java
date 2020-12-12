@@ -121,13 +121,17 @@ public class CovidService extends AppCompatActivity {
             builder.setView(view);
 
             builder.setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                covidsAdapter.addData(new Covid(finalCovids.get(finalCovids.size() - 1).getId() + 1, ((EditText) view.findViewById(R.id.title)).getText().toString(), ((EditText) view.findViewById(R.id.message)).getText().toString(), ((EditText) view.findViewById(R.id.address)).getText().toString()));
-                try {
-                    DataObject data = jsonInteractor.readJSON(DataObject.class);
-                    data.setCovids(covidsAdapter.getItems());
-                    jsonInteractor.writeJSON(data);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (((EditText) view.findViewById(R.id.title)).getText().toString().length()==0 || ((EditText) view.findViewById(R.id.message)).getText().toString().length()==0 || ((EditText) view.findViewById(R.id.address)).getText().toString().length()==0) {
+                    Toast.makeText(this, "Нельзя оставлять поля заявки пустыми", Toast.LENGTH_SHORT).show();
+                } else{
+                    covidsAdapter.addData(new Covid(finalCovids.get(finalCovids.size() - 1).getId() + 1, ((EditText) view.findViewById(R.id.title)).getText().toString(), ((EditText) view.findViewById(R.id.message)).getText().toString(), ((EditText) view.findViewById(R.id.address)).getText().toString()));
+                    try {
+                        DataObject data = jsonInteractor.readJSON(DataObject.class);
+                        data.setCovids(covidsAdapter.getItems());
+                        jsonInteractor.writeJSON(data);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
 
             });

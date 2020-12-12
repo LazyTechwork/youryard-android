@@ -3,6 +3,7 @@ package com.example.yard.adapters;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yard.R;
@@ -25,12 +27,13 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHolder> {
 
     private ArrayList<Poll> items;
     private ArrayList<Integer> lockedPolls;
-    private Activity activity;
+    private final Activity activity;
     private final JSONInteractor dataInteractor;
 
     public PollsAdapter(ArrayList<Poll> items, Activity activity) {
@@ -65,6 +68,7 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
         activity.runOnUiThread(() -> notifyItemChanged(pos, poll));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull PollsAdapter.PollViewHolder holder, int position) {
         holder.bind(position);
@@ -102,6 +106,7 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
             }
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.N)
         public void bind(int itemPosition) {
             Poll poll = items.get(itemPosition);
             TextView mVotesCount = itemView.findViewById(R.id.votes_count);
@@ -127,6 +132,9 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
             ProgressBar progressBar = itemView.findViewById(R.id.poll_progress);
             progressBar.setMax(poll.getCons() + poll.getPros());
             progressBar.setProgress(poll.getPros());
+
+            if (!lockedPolls.contains(poll.getId()))
+                ((ImageView) itemView.findViewById(R.id.delete_button)).setVisibility(View.INVISIBLE);
 
             mImageLike.setOnClickListener(v -> {
                 if (lockedPolls.contains(poll.getId())) {
@@ -179,6 +187,27 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
                     updateData(poll, itemPosition);
                 } catch (IOException e) {
                     Log.e("Polls Adapter", "Error while reading or writing data", e);
+                }
+            });
+
+            ((ImageView) itemView.findViewById(R.id.delete_button)).setOnClickListener(l -> {
+                JSONInteractor jsonInteractor = new JSONInteractor(activity, "data.json");
+                try {
+                    DataObject data = jsonInteractor.readJSON(DataObject.class);
+                    if (!lockedPolls.contains(poll.getId()))
+                        return;
+                    ArrayList<Poll> pollArrayList = data.getPolls();
+                    pollArrayList.removeIf(p -> p.getId() == poll.getId());
+                    data.setPolls(pollArrayList);
+                    ArrayList<Integer> mypolls = data.getMypolls();
+                    mypolls.removeIf(p -> p == poll.getId());
+                    items.removeIf(p -> p.getId() == poll.getId());
+                    data.setMypolls(new ArrayList<>(mypolls.stream().distinct().collect(Collectors.toList())));
+                    setLockedPolls(data.getMypolls());
+                    jsonInteractor.writeJSON(data);
+                    notifyDataSetChanged();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             });
         }

@@ -1,69 +1,65 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
+
     <TextView
         android:id="@+id/hello"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_gravity="center"
         android:gravity="center_vertical"
-        android:text="Твой двор"
-        android:textSize="22sp"
-        android:fontFamily="@font/montserrat"
-        android:textColor="@color/white"
         android:padding="8dp"
         android:scaleType="center"
         android:background="@color/main_blue"
-        android:contentDescription="@string/app_name" />
+        android:contentDescription="@string/app_name"
+
+        android:text="Твой двор"
+        android:textSize="22sp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/white" />
+
     <EditText
-        android:layout_marginHorizontal="20dp"
         android:id="@+id/title"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="16dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
+
         android:fontFamily="@font/montserrat"
         android:hint="Заголовок" />
 
     <EditText
         android:id="@+id/message"
-        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
         android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="20dp"
+
         android:fontFamily="@font/montserrat"
         android:inputType="textMultiLine"
         android:hint="Кратко расскажите \nо том, что случилось"/>
+
     <EditText
-        android:layout_marginHorizontal="20dp"
         android:id="@+id/address"
         android:inputType="textShortMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
+
+        android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/montserrat"
         android:hint="По какому адресу это произошло?"/>
+
     <EditText
-        android:layout_marginHorizontal="20dp"
         android:id="@+id/photo"
         android:inputType="textShortMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="16dp"
+
         android:fontFamily="@font/montserrat"
         android:hint="Прикрепите ссылку на картинку"/>
 </LinearLayout>
