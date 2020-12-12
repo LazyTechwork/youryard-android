@@ -7,6 +7,9 @@ import androidx.annotation.RequiresApi;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+/**
+ * Class for parsing data from json
+ */
 public class DataObject {
     private ArrayList<Poll> polls;
     private ArrayList<Integer> mypolls;

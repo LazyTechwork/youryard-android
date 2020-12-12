@@ -1,5 +1,8 @@
 package com.example.yard.data;
 
+/**
+ * Class for parsing data from json
+ */
 public class Poll {
     private int id, pros, cons;
     private String name, description, address, image;

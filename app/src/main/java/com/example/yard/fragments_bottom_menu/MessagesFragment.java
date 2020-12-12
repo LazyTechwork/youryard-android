@@ -26,7 +26,6 @@ import com.example.yard.R;
 import com.example.yard.adapters.MessagesAdapter;
 import com.example.yard.data.Message;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -60,6 +59,7 @@ public class MessagesFragment extends Fragment {
         //WORK WITH MESSAGES VIEW
         userID = mAuth.getCurrentUser().getUid();
 
+//        CREATING RECYCLERVIEW FOR MESSAGES
         ArrayList<Message> messages = new ArrayList<>();
         MessagesAdapter messagesAdapter = new MessagesAdapter(getActivity());
         RecyclerView recyclerView = v.findViewById(R.id.messagesView);
@@ -67,6 +67,7 @@ public class MessagesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
         recyclerView.setAdapter(messagesAdapter);
 
+//        READING DATA AND WRITING IT TO MESSAGES ARRAYLIST
         ((Button) v.findViewById(R.id.refresh)).setOnClickListener((View.OnClickListener) v1 -> {
             DocumentReference documentReferenceUser = fStore.collection("users").document(userID);
             documentReferenceUser.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -79,6 +80,7 @@ public class MessagesFragment extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
+                                messages.clear();
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     String user_sender_data = document.getString("message_sender");
                                     String user_recipient_data = document.getString("message_recipient");
@@ -157,7 +159,6 @@ public class MessagesFragment extends Fragment {
                     }
                 });
 
-
                 builder.setPositiveButton("Отправить", (dialog, which) -> {
                     if (recipient.equals(user_name)) {
                         Toast.makeText(getActivity(), "Нельзя отправить сообщение самому себе", Toast.LENGTH_SHORT).show();
@@ -170,17 +171,12 @@ public class MessagesFragment extends Fragment {
                         date = Long.toString(new Date().getTime());
                         m.put("message_date", date);
 
-                        documentReference.set(m).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                //Maybe someday I will write something here.....
-                            }
+                        documentReference.set(m).addOnSuccessListener(aVoid -> {
                         });
                     }
                 });
 
                 builder.setNegativeButton("Отмена", (dialog, which) -> {
-                    //nothing
                 });
 
                 builder.show();

@@ -23,6 +23,12 @@ public class JSONInteractor {
         this.context = context;
     }
 
+    /**
+     * Reads JSON from file and returns it
+     *
+     * @return raw JSON
+     * @throws FileNotFoundException
+     */
     public String readRawJSON() throws FileNotFoundException {
         Scanner fileReader = new Scanner(this.file);
         StringBuilder stringBuilder = new StringBuilder();
@@ -33,6 +39,13 @@ public class JSONInteractor {
         return stringBuilder.toString();
     }
 
+    /**
+     * Writes raw JSON into file
+     *
+     * @param json JSON string
+     * @return
+     * @throws IOException
+     */
     public JSONInteractor writeRawJSON(String json) throws IOException {
         FileWriter fileWriter = new FileWriter(this.file);
         fileWriter.write(json);
@@ -40,10 +53,25 @@ public class JSONInteractor {
         return this;
     }
 
+    /**
+     * Parses JSON from file and returns object of type clazz
+     *
+     * @param clazz Object class
+     * @param <T>   type of object
+     * @return parsed object
+     * @throws FileNotFoundException
+     */
     public <T> T readJSON(Class<T> clazz) throws FileNotFoundException {
         return this.gson.fromJson(this.readRawJSON(), clazz);
     }
 
+    /**
+     * Parse object and convert it to JSON
+     *
+     * @param object that need to be parsed
+     * @return instance of this
+     * @throws IOException
+     */
     public JSONInteractor writeJSON(Object object) throws IOException {
         return this.writeRawJSON(this.gson.toJson(object));
     }
@@ -62,15 +90,6 @@ public class JSONInteractor {
             return null;
         }
         return json;
-    }
-
-    public File getFile() {
-        return file;
-    }
-
-    public JSONInteractor setFile(String filename) {
-        this.file = new File(context.getExternalFilesDir(null), filename);
-        return this;
     }
 
     public Context getContext() {

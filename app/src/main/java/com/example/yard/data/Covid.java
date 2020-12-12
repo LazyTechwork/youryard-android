@@ -1,5 +1,8 @@
 package com.example.yard.data;
 
+/**
+ * Class for parsing data from json
+ */
 public class Covid {
     private int id;
     private String name;

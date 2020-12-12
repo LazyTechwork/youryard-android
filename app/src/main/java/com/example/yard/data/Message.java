@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Class for parsing data from json
+ */
 public class Message {
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", new Locale("ru"));
     private final SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", new Locale("ru"));
