@@ -1,7 +1,6 @@
 package com.example.yard.adapters;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yard.R;
-import com.example.yard.data.Covid;
 import com.example.yard.data.Money;
 
 import java.util.ArrayList;
@@ -30,6 +28,15 @@ public class MoneyAdapter extends RecyclerView.Adapter<MoneyAdapter.MoneyViewHol
     public MoneyAdapter(Activity activity) {
         this.items = new ArrayList<>();
         this.activity = activity;
+    }
+
+    public ArrayList<Money> getItems() {
+        return items;
+    }
+
+    public void addData(Money money) {
+        this.items.add(money);
+        this.notifyItemChanged(this.items.size() - 1);
     }
 
     @NonNull

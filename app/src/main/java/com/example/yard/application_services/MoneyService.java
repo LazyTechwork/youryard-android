@@ -1,22 +1,19 @@
 package com.example.yard.application_services;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.yard.R;
 import com.example.yard.adapters.MoneyAdapter;
-import com.example.yard.adapters.PollsAdapter;
 import com.example.yard.data.DataObject;
 import com.example.yard.data.Money;
-import com.example.yard.data.Poll;
 import com.example.yard.utils.JSONInteractor;
 
 import java.io.FileNotFoundException;
@@ -31,6 +28,19 @@ public class MoneyService extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_money_service);
+
+        MoneyAdapter moneyAdapter = new MoneyAdapter(this);
+        try {
+            DataObject data = new JSONInteractor(this, "data.json").readJSON(DataObject.class);
+            moneyAdapter.updateData(data.getMoney());
+
+            RecyclerView moneyView = findViewById(R.id.money_view);
+            moneyView.setAdapter(moneyAdapter);
+            moneyView.setLayoutManager(new LinearLayoutManager(this));
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         mCreateButton = findViewById(R.id.createButton);
         mCreateButton.setOnClickListener(new View.OnClickListener() {
@@ -48,24 +58,23 @@ public class MoneyService extends AppCompatActivity {
                 EditText formPerPerson = view.findViewById(R.id.sum_per_person);
 
                 builder.setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                    //Write something that will make this alert work here
+                    JSONInteractor jsonInteractor = new JSONInteractor(getApplicationContext(), "data.json");
+                    try {
+                        DataObject data = null;
+                        data = jsonInteractor.readJSON(DataObject.class);
+                        ArrayList<Money> money = data.getMoney();
+                        int newId = money.get(money.size() - 1).getId() + 1;
+                        money.add(new Money(newId, 0, Integer.parseInt(formOverallSum.getText().toString()), formTitle.getText().toString(), formText.getText().toString(), formAddress.getText().toString(), formPerPerson.getText().toString(), false));
+                        data.setMoney(money);
+                        jsonInteractor.writeJSON(data);
+                        moneyAdapter.updateData(money);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 });
 
                 builder.setNegativeButton(android.R.string.no, null).show();
             }
         });
-
-        try {
-            DataObject data = new JSONInteractor(this, "data.json").readJSON(DataObject.class);
-            MoneyAdapter moneyAdapter = new MoneyAdapter(this);
-            moneyAdapter.updateData(data.getMoney());
-
-            RecyclerView moneyView = findViewById(R.id.money_view);
-            moneyView.setAdapter(moneyAdapter);
-            moneyView.setLayoutManager(new LinearLayoutManager(this));
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 }

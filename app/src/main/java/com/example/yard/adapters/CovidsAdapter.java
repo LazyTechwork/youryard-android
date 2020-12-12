@@ -1,9 +1,6 @@
 package com.example.yard.adapters;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.yard.R;
 import com.example.yard.data.Covid;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class CovidsAdapter extends RecyclerView.Adapter<CovidsAdapter.CovidViewHolder> {
