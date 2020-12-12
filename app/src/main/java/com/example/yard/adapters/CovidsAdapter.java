@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -78,6 +80,12 @@ public class CovidsAdapter extends RecyclerView.Adapter<CovidsAdapter.CovidViewH
             ((TextView) itemView.findViewById(R.id.covid_header)).setText(covid.getName());
             ((TextView) itemView.findViewById(R.id.covid_city)).setText(covid.getAddress());
             ((TextView) itemView.findViewById(R.id.covid_desc)).setText(covid.getDescription());
+            ((Button) itemView.findViewById(R.id.button_help)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(activity, "Данный сервис находится в разработке и скоро появится на ваших устройствах! ", Toast.LENGTH_LONG).show();
+                }
+            });
         }
     }
 }

@@ -60,12 +60,12 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
 
     public void updateData(ArrayList<Poll> polls) {
         this.items = polls;
-        activity.runOnUiThread(this::notifyDataSetChanged);
+        notifyDataSetChanged();
     }
 
     public void updateData(Poll poll, int pos) {
         this.items.set(pos, poll);
-        activity.runOnUiThread(() -> notifyItemChanged(pos, poll));
+        notifyItemChanged(pos, poll);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -85,6 +85,7 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
 
     public void setLockedPolls(ArrayList<Integer> lockedPolls) {
         this.lockedPolls = lockedPolls;
+        notifyDataSetChanged();
     }
 
     class PollViewHolder extends RecyclerView.ViewHolder {
@@ -197,15 +198,15 @@ public class PollsAdapter extends RecyclerView.Adapter<PollsAdapter.PollViewHold
                     if (!lockedPolls.contains(poll.getId()))
                         return;
                     ArrayList<Poll> pollArrayList = data.getPolls();
-                    pollArrayList.removeIf(p -> p.getId() == poll.getId());
-                    data.setPolls(pollArrayList);
                     ArrayList<Integer> mypolls = data.getMypolls();
+                    pollArrayList.removeIf(p -> p.getId() == poll.getId());
                     mypolls.removeIf(p -> p == poll.getId());
                     items.removeIf(p -> p.getId() == poll.getId());
+                    data.setPolls(pollArrayList);
                     data.setMypolls(new ArrayList<>(mypolls.stream().distinct().collect(Collectors.toList())));
                     setLockedPolls(data.getMypolls());
                     jsonInteractor.writeJSON(data);
-                    notifyDataSetChanged();
+                    updateData(data.getMyPollsObject());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

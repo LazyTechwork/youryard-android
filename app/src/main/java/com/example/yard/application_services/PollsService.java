@@ -20,6 +20,7 @@ public class PollsService extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_polls_service);
 
+        //ADD NEW POLLS TO RECYCLERVIEW
         try {
             DataObject data = new JSONInteractor(this, "data.json").readJSON(DataObject.class);
             PollsAdapter pollsAdapter = new PollsAdapter(this);

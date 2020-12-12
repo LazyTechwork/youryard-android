@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -81,6 +83,12 @@ public class MoneyAdapter extends RecyclerView.Adapter<MoneyAdapter.MoneyViewHol
             ((TextView) itemView.findViewById(R.id.money_desc)).setText(money.getDescription());
             ((TextView) itemView.findViewById(R.id.money_desc)).setText(money.getDescription());
             ((TextView) itemView.findViewById(R.id.money_progresstext)).setText("" + money.getCollected() + "/" + money.getNeed());
+            ((Button) itemView.findViewById(R.id.money_paybtn)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(activity, "Данный сервис находится в разработке и скоро появится на ваших устройствах! ", Toast.LENGTH_LONG).show();
+                }
+            });
             ProgressBar progressBar = (ProgressBar) itemView.findViewById(R.id.money_progressbar);
             progressBar.setMax(money.getNeed());
             progressBar.setProgress(Math.min(money.getCollected(), money.getNeed()));

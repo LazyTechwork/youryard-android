@@ -45,6 +45,7 @@ public class ProfileFragment extends Fragment {
         mEmail = v.findViewById(R.id.email);
         mStreet = v.findViewById(R.id.street);
 
+        //SET USER PROFILE DATA FROM FIRESTORE COLLECTION
         DocumentReference documentReference = fStore.collection("users").document(userID);
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
@@ -58,8 +59,8 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        //EXIT BUTTON
         Button mExit = v.findViewById(R.id.exit);
-
         mExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

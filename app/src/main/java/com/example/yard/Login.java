@@ -23,7 +23,7 @@ public class Login extends AppCompatActivity {
     Button mLogin;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
-    String email, password, region, userID;
+    String email, password;
     EditText mTextLogin, mTextPassword;
 
     @Override
@@ -38,6 +38,7 @@ public class Login extends AppCompatActivity {
         mTextLogin = findViewById(R.id.editTextLogin);
         mTextPassword = findViewById(R.id.editTextPassword);
 
+        //LOG IN USER
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

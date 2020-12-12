@@ -70,6 +70,7 @@ public class RegisterFragment2 extends Fragment {
                                         JSONObject jsonObject = array.getJSONObject(i);
                                         Register.setDefaults("region_index", String.valueOf(i), getActivity());
                                         Register.setDefaults("region_name", jsonObject.getString("region"), getActivity());
+                                        mRegion.setText(jsonObject.getString("region"));
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -103,8 +104,8 @@ public class RegisterFragment2 extends Fragment {
                     //SET DEFAULTS
                     Register.setDefaults("user-city", mCity.getText().toString().trim(), getActivity());
                     Register.setDefaults("user-street", mStreet.getText().toString().trim(), getActivity());
-                    //CHANGE FRAGMENT
 
+                    //CHANGE FRAGMENT
                     if (mCity.getText().toString().isEmpty()) {
                         Toast.makeText(getActivity(), "Название города не должно быть пустым", Toast.LENGTH_SHORT).show();
                     } else if (mStreet.getText().toString().isEmpty()) {

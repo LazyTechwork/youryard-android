@@ -13,6 +13,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        //JUST SPLASH ACTIVITY, NOTHING SPECIAL
         int milliseconds_delayed = 1200;
         new Handler().postDelayed(new Runnable() {
             @Override

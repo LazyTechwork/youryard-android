@@ -84,7 +84,7 @@ public class MessagesFragment extends Fragment {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     String user_sender_data = document.getString("message_sender");
                                     String user_recipient_data = document.getString("message_recipient");
-                                    if (user_recipient_data.equals(current_user_name) || user_sender_data.equals("admin")) {
+                                    if (user_recipient_data.equals(current_user_name) || user_sender_data.equals("admin ")) {
                                         messages.add(new Message(document.getString("message_text"), document.getString("message_date"), document.getString("message_sender")));
                                         Log.d("Messages", document.getString("message_date") + Long.parseLong(document.getString("message_date")));
                                     }
@@ -100,8 +100,8 @@ public class MessagesFragment extends Fragment {
             });
         });
         ((Button) v.findViewById(R.id.refresh)).performClick();
-        //WORK WITH WRITE MESSAGE BUTTON
 
+        //WORK WITH WRITE MESSAGE BUTTON
         Button mNewMessage = v.findViewById(R.id.new_message);
         mNewMessage.setOnClickListener(new View.OnClickListener() {
             @Override

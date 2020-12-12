@@ -30,6 +30,7 @@ public class ServicesFragment extends Fragment {
         mImageMaps = v.findViewById(R.id.maps_image);
         mImagePools = v.findViewById(R.id.pools_image);
 
+        //TO COVID SERVICE CLASS
         mImageCovid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +38,7 @@ public class ServicesFragment extends Fragment {
             }
         });
 
+        //TO MONEY CLASS
         mImageMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +46,7 @@ public class ServicesFragment extends Fragment {
             }
         });
 
+        //TO MY POLLS CLASS
         mImageMaps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,6 +54,7 @@ public class ServicesFragment extends Fragment {
             }
         });
 
+        //TO POLLS CLASS
         mImagePools.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

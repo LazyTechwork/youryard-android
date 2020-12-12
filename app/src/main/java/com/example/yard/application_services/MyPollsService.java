@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 
 public class MyPollsService extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +75,15 @@ public class MyPollsService extends AppCompatActivity {
                     builder.setNegativeButton(android.R.string.no, null).show();
                 });
             } else {
+                PollsAdapter pollsAdapter = new PollsAdapter(this);
+                pollsAdapter.setLockedPolls(data.getMypolls());
+                pollsAdapter.updateData(data.getMyPollsObject());
+
+                RecyclerView pollsView = findViewById(R.id.polls_view);
+                pollsView.setAdapter(pollsAdapter);
+                pollsView.setItemAnimator(null);
+                pollsView.setLayoutManager(new LinearLayoutManager(this));
+
                 Button mButton = findViewById(R.id.nextButton);
                 mButton.setOnClickListener(v -> {
                     //CREATE ALERT
@@ -97,8 +108,7 @@ public class MyPollsService extends AppCompatActivity {
                                 my_polls.add(newId);
                                 data.setMypolls(my_polls);
                                 jsonInteractor.writeJSON(data);
-
-                                activity.recreate();
+                                pollsAdapter.updateData(data.getMyPollsObject());
                             } catch (IOException e) {
                                 Log.e("Maps Service", "Error occurred while reading/writing data", e);
                             }
@@ -106,16 +116,6 @@ public class MyPollsService extends AppCompatActivity {
                     });
                     builder.setNegativeButton(android.R.string.no, null).show();
                 });
-
-                PollsAdapter pollsAdapter = new PollsAdapter(this);
-                pollsAdapter.setLockedPolls(data.getMypolls());
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    pollsAdapter.updateData(data.getMyPollsObject());
-                }
-
-                RecyclerView pollsView = findViewById(R.id.polls_view);
-                pollsView.setAdapter(pollsAdapter);
-                pollsView.setLayoutManager(new LinearLayoutManager(this));
             }
 
         } catch (FileNotFoundException e) {
